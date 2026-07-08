@@ -11,6 +11,13 @@
 | [Eval Harness](eval-harness.md) | Harness 工程 | 比较 Prompt、Context 或 Agent 策略的质量 |
 | [Improvement Loop](improvement-loop.md) | Loop 工程 | 设计执行、反馈、修正、再执行的闭环 |
 | [企业级 LLM 实践方案集](enterprise-practice-playbook.md) | 全部专题 | 把六个大节点转成可试点、可采集数据、可验收的企业操作方案 |
+| [企业 Prompt 运营场景](enterprise-prompt-operations.md) | Prompt 工程 | 把客服、销售、合同、HR、财务等 Prompt 变更纳入版本、评测和灰度 |
+| [企业 Context 与 RAG 场景](enterprise-context-rag-operations.md) | Context 工程 | 建立带来源、版本、权限和引用评测的企业知识问答方案 |
+| [企业 MCP 与工具接入场景](enterprise-mcp-tool-operations.md) | MCP + Skill | 设计工单、CRM、指标、发布、文档工具的权限和审计方案 |
+| [企业 Agent 运营场景](enterprise-agent-operations.md) | Agent 工程 | 设计缺陷修复、运维诊断、数据分析、客户成功等可接管 Agent 流程 |
+| [企业 Eval Harness 场景](enterprise-evaluation-harness.md) | Harness 工程 | 为客服、RAG、Agent、模型替换和 LLM-as-judge 建立回归评测 |
+| [企业 Improvement Loop 场景](enterprise-improvement-loop.md) | Loop 工程 | 把失败样例转成 Prompt、RAG、知识库和工具流程的可控改进循环 |
+| [企业治理与安全场景](enterprise-governance-safety.md) | 治理/安全 | 补齐上线门禁、提示注入、供应商风险、敏感数据和人工接管 |
 
 ## 统一验收维度
 

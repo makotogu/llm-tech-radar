@@ -10,6 +10,20 @@
 - 试点周期建议 2-4 周，至少覆盖 50 条真实或脱敏样例。
 - 只有当质量、效率、成本和风险指标都可解释时，才进入扩大试点。
 
+## 细分实践文档
+
+这份总表用于快速选题。真正立项时，优先进入下面的细分文档查看资料地址、数据口径和风险门禁。
+
+| 节点 | 细分文档 | 重点 |
+| --- | --- | --- |
+| Prompt | [企业 Prompt 运营场景](enterprise-prompt-operations.md) | 客服、销售、合同、HR、财务的 Prompt 版本、评测和灰度 |
+| Context | [企业 Context 与 RAG 场景](enterprise-context-rag-operations.md) | 制度问答、售后工单、研发代码库、销售知识和投研资料 |
+| MCP + Skill | [企业 MCP 与工具接入场景](enterprise-mcp-tool-operations.md) | 工单、CRM、指标、发布、文档工具的权限和审计 |
+| Agent | [企业 Agent 运营场景](enterprise-agent-operations.md) | 缺陷修复、运维诊断、数据分析、客户成功和知识库维护 |
+| Harness | [企业 Eval Harness 场景](enterprise-evaluation-harness.md) | 客服回归、RAG 引用、工具调用、模型替换和模型裁判 |
+| Loop | [企业 Improvement Loop 场景](enterprise-improvement-loop.md) | 测试失败、客服纠错、RAG 优化、Prompt 优化和知识库更新 |
+| 治理/安全 | [企业治理与安全场景](enterprise-governance-safety.md) | 上线门禁、提示注入、供应商风险、敏感数据和人工接管 |
+
 ## Prompt 工程实践
 
 | 场景 | 企业操作方案 | 数据支撑与验收指标 | 风险控制 |
