@@ -20,6 +20,8 @@
 ```text
 .
 ├── README.md
+├── index.html       # GitHub Pages 手机阅读入口
+├── assets/          # 页面样式和交互脚本
 ├── inbox/           # 人工新闻建议收件箱
 ├── gaps/            # 漏收新闻候选和人工检查清单
 ├── topics/          # 技术专题：定义、资料、场景、长期判断
@@ -39,11 +41,11 @@
 
 ## 推荐阅读路径
 
-1. 到 [sources/README.md](sources/README.md) 查看已经确认的一手资料。
-2. 按自己的工作场景选择一个专题，例如先读 Prompt 工程或 Context 工程。
-3. 到 [scenarios/README.md](scenarios/README.md) 选择一个实践场景，把新闻启发落到流程、输入输出和验收标准。
-4. 查看 [inbox/news-suggestions.md](inbox/news-suggestions.md)，了解仍在处理的人工建议。
-5. 查看 [gaps/missed-news.md](gaps/missed-news.md)，了解疑似遗漏但尚未核验的候选新闻。
+1. 在 GitHub Pages 上打开 `index.html`，用手机浏览目录并阅读 Markdown 正文。
+2. 到 [sources/README.md](sources/README.md) 查看已经确认的一手资料。
+3. 按自己的工作场景选择一个专题，例如先读 Prompt 工程或 Context 工程。
+4. 到 [scenarios/README.md](scenarios/README.md) 选择一个实践场景，把新闻启发落到流程、输入输出和验收标准。
+5. 查看 [inbox/news-suggestions.md](inbox/news-suggestions.md) 和 [gaps/missed-news.md](gaps/missed-news.md)，了解仍在处理的人工建议和漏收候选。
 
 ## 更新规则
 

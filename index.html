@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>LLM 知识仓库</title>
+    <meta name="description" content="面向手机阅读的 LLM 知识仓库入口，聚合新闻建议、漏收候选、资料索引、技术专题和实践场景。">
+    <link rel="stylesheet" href="assets/site.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="回到顶部">
+        <span class="brand-mark" aria-hidden="true">LLM</span>
+        <span>
+          <strong>LLM 知识仓库</strong>
+          <small>新闻线索 · 资料索引 · 实践场景</small>
+        </span>
+      </a>
+      <a class="github-link" href="https://github.com/makotogu/llm-tech-radar" target="_blank" rel="noreferrer">GitHub</a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Mobile knowledge reader</p>
+          <h1 id="page-title">LLM 知识仓库</h1>
+          <p class="hero-text">手机阅读 LLM 资料、专题、新闻线索和实践场景。</p>
+          <div class="hero-actions">
+            <a href="#library" class="primary-action">开始阅读</a>
+            <a href="#workflow" class="secondary-action">查看流程</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orbit">
+            <span style="--i:0">Prompt</span>
+            <span style="--i:1">Context</span>
+            <span style="--i:2">MCP</span>
+            <span style="--i:3">Agent</span>
+            <span style="--i:4">Harness</span>
+            <span style="--i:5">Loop</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="status-strip" aria-label="知识库概览">
+        <div>
+          <strong id="doc-count">0</strong>
+          <span>可读文档</span>
+        </div>
+        <div>
+          <strong>6</strong>
+          <span>核心专题</span>
+        </div>
+        <div>
+          <strong>0</strong>
+          <span>构建依赖</span>
+        </div>
+      </section>
+
+      <section class="workflow" id="workflow" aria-labelledby="workflow-title">
+        <div>
+          <p class="eyebrow">Repository workflow</p>
+          <h2 id="workflow-title">先收线索，再沉淀知识。</h2>
+        </div>
+        <ol class="workflow-list">
+          <li><span>01</span>人工建议进入收件箱</li>
+          <li><span>02</span>核验来源和主题归属</li>
+          <li><span>03</span>沉淀到资料、专题、场景或实验</li>
+          <li><span>04</span>漏收候选只记录问题，不直接写结论</li>
+        </ol>
+      </section>
+
+      <section class="library" id="library" aria-labelledby="library-title">
+        <div class="library-head">
+          <div>
+            <p class="eyebrow">Read on phone</p>
+            <h2 id="library-title">文档目录</h2>
+          </div>
+          <label class="search-box">
+            <span>搜索</span>
+            <input id="search-input" type="search" placeholder="输入专题、场景、资料..." autocomplete="off">
+          </label>
+        </div>
+
+        <nav class="filter-tabs" aria-label="文档分类">
+          <button class="active" type="button" data-filter="all">全部</button>
+          <button type="button" data-filter="topic">专题</button>
+          <button type="button" data-filter="source">资料</button>
+          <button type="button" data-filter="scenario">场景</button>
+          <button type="button" data-filter="queue">线索</button>
+          <button type="button" data-filter="template">模板</button>
+        </nav>
+
+        <div class="doc-list" id="doc-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <aside class="reader" id="reader" aria-hidden="true" aria-labelledby="reader-title">
+      <div class="reader-backdrop" data-close-reader></div>
+      <article class="reader-panel">
+        <div class="reader-toolbar">
+          <div>
+            <p id="reader-category">文档</p>
+            <h2 id="reader-title">选择一篇文档</h2>
+          </div>
+          <div class="reader-actions">
+            <a id="raw-link" href="#" target="_blank" rel="noreferrer">源文件</a>
+            <button type="button" data-close-reader aria-label="关闭阅读器">关闭</button>
+          </div>
+        </div>
+        <div class="reader-content" id="reader-content"></div>
+      </article>
+    </aside>
+
+    <script src="assets/site.js" defer></script>
+  </body>
+</html>
