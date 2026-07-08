@@ -172,7 +172,8 @@ const categoryNames = {
 
 const state = {
   filter: "all",
-  query: ""
+  query: "",
+  currentPath: ""
 };
 
 const list = document.querySelector("#doc-list");
@@ -226,10 +227,11 @@ function setFilter(filter) {
   renderList();
 }
 
-async function openDocument(path) {
-  const doc = documents.find((item) => item.path === path);
+async function openDocument(path, options = {}) {
+  const doc = findDocument(path);
   if (!doc) return;
 
+  state.currentPath = doc.path;
   readerTitle.textContent = doc.title;
   readerCategory.textContent = categoryNames[doc.category] || "文档";
   rawLink.href = doc.path;
@@ -242,8 +244,13 @@ async function openDocument(path) {
     const response = await fetch(doc.path, { cache: "no-cache" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const markdown = await response.text();
-    readerContent.innerHTML = renderMarkdown(markdown);
+    readerContent.innerHTML = renderMarkdown(markdown, doc.path);
     readerContent.scrollTop = 0;
+    if (options.updateUrl !== false) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("doc", doc.path);
+      window.history.replaceState(null, "", url);
+    }
   } catch (error) {
     readerContent.innerHTML = `
       <p>无法直接加载这个 Markdown 文件。GitHub Pages 上通常可以正常读取；如果你正在用 file:// 打开页面，请改用本地静态服务器。</p>
@@ -256,9 +263,33 @@ function closeReader() {
   reader.classList.remove("open");
   reader.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
+  state.currentPath = "";
+  const url = new URL(window.location.href);
+  url.searchParams.delete("doc");
+  window.history.replaceState(null, "", url);
 }
 
-function renderMarkdown(markdown) {
+function findDocument(path) {
+  const normalized = normalizeDocumentPath(path);
+  return documents.find((item) => normalizeDocumentPath(item.path) === normalized);
+}
+
+function normalizeDocumentPath(path) {
+  const clean = String(path || "")
+    .split("#", 1)[0]
+    .split("?", 1)[0]
+    .replace(/^\.\/+/, "")
+    .replace(/^\/+/, "");
+
+  if (!clean) return "";
+  if (clean.endsWith("/")) return `${clean}README.md`;
+  if (!clean.endsWith(".md") && documents.some((doc) => doc.path === `${clean}/README.md`)) {
+    return `${clean}/README.md`;
+  }
+  return clean;
+}
+
+function renderMarkdown(markdown, sourcePath) {
   const lines = markdown.replace(/\r\n/g, "\n").split("\n");
   let html = "";
   let paragraph = [];
@@ -269,14 +300,14 @@ function renderMarkdown(markdown) {
 
   const flushParagraph = () => {
     if (paragraph.length) {
-      html += `<p>${formatInline(paragraph.join(" "))}</p>`;
+      html += `<p>${formatInline(paragraph.join(" "), sourcePath)}</p>`;
       paragraph = [];
     }
   };
 
   const flushList = () => {
     if (listItems.length) {
-      html += `<ul>${listItems.map((item) => `<li>${formatInline(item)}</li>`).join("")}</ul>`;
+      html += `<ul>${listItems.map((item) => `<li>${formatInline(item, sourcePath)}</li>`).join("")}</ul>`;
       listItems = [];
     }
   };
@@ -287,9 +318,9 @@ function renderMarkdown(markdown) {
       const [head, ...body] = rows.map(parseTableRow);
       if (head) {
         html += "<table><thead><tr>";
-        html += head.map((cell) => `<th>${formatInline(cell)}</th>`).join("");
+        html += head.map((cell) => `<th>${formatInline(cell, sourcePath)}</th>`).join("");
         html += "</tr></thead><tbody>";
-        html += body.map((row) => `<tr>${row.map((cell) => `<td>${formatInline(cell)}</td>`).join("")}</tr>`).join("");
+        html += body.map((row) => `<tr>${row.map((cell) => `<td>${formatInline(cell, sourcePath)}</td>`).join("")}</tr>`).join("");
         html += "</tbody></table>";
       }
       tableRows = [];
@@ -341,7 +372,7 @@ function renderMarkdown(markdown) {
       flushParagraph();
       flushList();
       const level = heading[1].length;
-      html += `<h${level}>${formatInline(heading[2])}</h${level}>`;
+      html += `<h${level}>${formatInline(heading[2], sourcePath)}</h${level}>`;
       continue;
     }
 
@@ -374,13 +405,48 @@ function parseTableRow(row) {
   return row.replace(/^\||\|$/g, "").split("|").map((cell) => cell.trim());
 }
 
-function formatInline(value) {
+function formatInline(value, sourcePath) {
   return escapeHtml(value)
     .replace(/`([^`]+)`/g, "<code>$1</code>")
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, label, href) => {
-      return `<a href="${escapeAttribute(href)}" target="_blank" rel="noreferrer">${label}</a>`;
+      return renderLink(label, href, sourcePath);
+    })
+    .replace(/(^|[\s>])(https?:\/\/[^\s<]+)/g, (_match, prefix, href) => {
+      return `${prefix}<a href="${escapeAttribute(href)}" target="_blank" rel="noreferrer">${href}</a>`;
     });
+}
+
+function renderLink(label, href, sourcePath) {
+  const resolved = resolveInternalPath(href, sourcePath);
+  if (!resolved) {
+    return `<a href="${escapeAttribute(href)}" target="_blank" rel="noreferrer">${label}</a>`;
+  }
+
+  const doc = findDocument(resolved);
+  if (doc) {
+    const url = new URL(window.location.href);
+    url.searchParams.set("doc", doc.path);
+    return `<a href="${escapeAttribute(url.pathname + url.search + url.hash)}" data-doc-path="${escapeAttribute(doc.path)}">${label}</a>`;
+  }
+
+  return `<a href="${escapeAttribute(resolved)}" target="_blank" rel="noreferrer">${label}</a>`;
+}
+
+function resolveInternalPath(href, sourcePath) {
+  if (!href || href.startsWith("#") || /^[a-z][a-z0-9+.-]*:/i.test(href)) {
+    return "";
+  }
+
+  const pageBase = new URL(".", window.location.href);
+  const sourceUrl = new URL(sourcePath, pageBase);
+  const resolved = new URL(href, sourceUrl);
+
+  if (resolved.origin !== window.location.origin || !resolved.pathname.startsWith(pageBase.pathname)) {
+    return "";
+  }
+
+  return decodeURIComponent(resolved.pathname.slice(pageBase.pathname.length));
 }
 
 function escapeHtml(value) {
@@ -409,6 +475,13 @@ list.addEventListener("click", (event) => {
   if (item) openDocument(item.dataset.path);
 });
 
+readerContent.addEventListener("click", (event) => {
+  const link = event.target.closest("a[data-doc-path]");
+  if (!link) return;
+  event.preventDefault();
+  openDocument(link.dataset.docPath);
+});
+
 document.querySelectorAll("[data-close-reader]").forEach((button) => {
   button.addEventListener("click", closeReader);
 });
@@ -420,6 +493,6 @@ window.addEventListener("keydown", (event) => {
 renderList();
 
 const initialDoc = new URLSearchParams(window.location.search).get("doc");
-if (initialDoc && documents.some((doc) => doc.path === initialDoc)) {
-  window.setTimeout(() => openDocument(initialDoc), 0);
+if (initialDoc && findDocument(initialDoc)) {
+  window.setTimeout(() => openDocument(initialDoc, { updateUrl: false }), 0);
 }
