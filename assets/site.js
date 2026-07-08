@@ -84,6 +84,55 @@ const documents = [
     summary: "覆盖六个大节点的企业试点方案、数据口径、验收指标和风险控制。"
   },
   {
+    title: "企业 Prompt 运营场景",
+    path: "scenarios/enterprise-prompt-operations.md",
+    category: "scenario",
+    label: "企业",
+    summary: "客服、销售、合同、HR、财务等 Prompt 变更的版本、评测和灰度方案。"
+  },
+  {
+    title: "企业 Context 与 RAG 场景",
+    path: "scenarios/enterprise-context-rag-operations.md",
+    category: "scenario",
+    label: "企业",
+    summary: "制度问答、售后工单、研发代码库、销售知识和投研资料的来源化上下文方案。"
+  },
+  {
+    title: "企业 MCP 与工具接入场景",
+    path: "scenarios/enterprise-mcp-tool-operations.md",
+    category: "scenario",
+    label: "企业",
+    summary: "工单、CRM、指标、发布、文档工具的权限、审计和审批设计。"
+  },
+  {
+    title: "企业 Agent 运营场景",
+    path: "scenarios/enterprise-agent-operations.md",
+    category: "scenario",
+    label: "企业",
+    summary: "缺陷修复、运维诊断、数据分析、客户成功和知识库维护的可接管 Agent 流程。"
+  },
+  {
+    title: "企业 Eval Harness 场景",
+    path: "scenarios/enterprise-evaluation-harness.md",
+    category: "scenario",
+    label: "企业",
+    summary: "客服回归、RAG 引用、工具调用、模型替换和模型裁判的评测方案。"
+  },
+  {
+    title: "企业 Improvement Loop 场景",
+    path: "scenarios/enterprise-improvement-loop.md",
+    category: "scenario",
+    label: "企业",
+    summary: "把失败样例转成 Prompt、RAG、知识库和工具流程的可控改进循环。"
+  },
+  {
+    title: "企业治理与安全场景",
+    path: "scenarios/enterprise-governance-safety.md",
+    category: "scenario",
+    label: "治理",
+    summary: "上线门禁、提示注入、供应商风险、敏感数据和人工接管的治理方案。"
+  },
+  {
     title: "Prompt 评审工作流",
     path: "scenarios/prompt-review-workflow.md",
     category: "scenario",
