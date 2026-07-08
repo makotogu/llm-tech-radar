@@ -41,7 +41,7 @@
 
 1. 到 [sources/README.md](sources/README.md) 查看已经确认的一手资料。
 2. 按自己的工作场景选择一个专题，例如先读 Prompt 工程或 Context 工程。
-3. 到 [scenarios/README.md](scenarios/README.md) 选择一个实践场景，把新闻启发落到流程、输入输出和验收标准。
+3. 到 [scenarios/README.md](scenarios/README.md) 选择一个实践场景；企业试点优先读 [企业级 LLM 实践方案集](scenarios/enterprise-practice-playbook.md)。
 4. 查看 [inbox/news-suggestions.md](inbox/news-suggestions.md)，了解仍在处理的人工建议。
 5. 查看 [gaps/missed-news.md](gaps/missed-news.md)，了解疑似遗漏但尚未核验的候选新闻。
 

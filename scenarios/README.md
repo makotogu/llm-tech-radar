@@ -10,6 +10,7 @@
 | [Agent 任务执行器](agent-task-runner.md) | Agent 工程 | 构建计划、工具调用、状态和失败恢复流程 |
 | [Eval Harness](eval-harness.md) | Harness 工程 | 比较 Prompt、Context 或 Agent 策略的质量 |
 | [Improvement Loop](improvement-loop.md) | Loop 工程 | 设计执行、反馈、修正、再执行的闭环 |
+| [企业级 LLM 实践方案集](enterprise-practice-playbook.md) | 全部专题 | 把六个大节点转成可试点、可采集数据、可验收的企业操作方案 |
 
 ## 统一验收维度
 
@@ -18,3 +19,4 @@
 - 可观察性：是否记录中间决策、上下文、工具调用和评测结果。
 - 安全性：是否处理权限、敏感数据和人工确认。
 - 成本/时延：是否有预算、停止条件和降级策略。
+- 数据支撑：是否有基线、样例来源、指标口径和上线前后对比。
