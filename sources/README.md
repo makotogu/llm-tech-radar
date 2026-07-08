@@ -16,6 +16,11 @@
 | Agent 工程 | OpenAI Agents SDK | 官方文档 | 持续更新 | https://openai.github.io/openai-agents-python/ | Agent 定义、运行、编排、guardrails 和 observability 的工程入口 | 进阶 |
 | Agent 工程 | OpenAI Using tools | 官方文档 | 持续更新 | https://developers.openai.com/api/docs/guides/tools | Agent 调用外部能力的基础接口和设计约束 | 入门到进阶 |
 | Harness 工程 | OpenAI Evals | 官方文档 | 持续更新 | https://developers.openai.com/api/docs/guides/evals | 建立评测、grader、回归和实验比较的官方入口 | 进阶 |
+| Harness 工程 | Google Gen AI evaluation service | 官方文档 | 持续更新 | https://cloud.google.com/vertex-ai/generative-ai/docs/models/evaluation-overview | 参考企业评测中的 dataset、metrics、rubric-based 和 computation-based metrics | 进阶 |
+| Context 工程 | OpenAI File search | 官方文档 | 持续更新 | https://developers.openai.com/api/docs/guides/file-search | 参考企业文件检索、向量存储和引用回答的实现入口 | 进阶 |
+| Context 工程 | Google Cloud RAG Engine overview | 官方文档 | 持续更新 | https://cloud.google.com/vertex-ai/generative-ai/docs/rag-overview | 参考企业级 RAG Engine 的索引、检索和管理设计 | 进阶 |
+| 安全治理 | OWASP Top 10 for LLM Applications | 官方项目 | 持续更新 | https://owasp.org/www-project-top-10-for-large-language-model-applications/ | 建立提示注入、越权工具调用、敏感信息泄露等风险检查清单 | 入门到进阶 |
+| 安全治理 | NIST AI Risk Management Framework | 官方框架 | 持续更新 | https://www.nist.gov/itl/ai-risk-management-framework | 建立企业 AI 治理、测量、管理和风险沟通框架 | 进阶 |
 
 ## 论文
 
@@ -26,6 +31,8 @@
 | Loop 工程 | Reflexion: Language Agents with Verbal Reinforcement Learning | 论文 | 2023-03-20 | https://arxiv.org/abs/2303.11366 | 通过语言反馈和 episodic memory 改善后续尝试，是 Agent 自我改进循环的代表 | 进阶 |
 | Loop 工程 | Self-Refine: Iterative Refinement with Self-Feedback | 论文 | 2023-03-30 | https://arxiv.org/abs/2303.17651 | 用生成、反馈、精修三段式表达测试时迭代改进 | 进阶 |
 | Harness/Loop 工程 | DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines | 论文 | 2023-10-05 | https://arxiv.org/abs/2310.03714 | 将 LM pipeline、指标和优化连接起来，是从手写 prompt 走向可优化系统的重要资料 | 进阶 |
+| 企业客服 Agent | Building Customer Support AI Agents at 100M-User Scale | 论文 | 2026-06-07 | https://arxiv.org/abs/2606.08867 | 展示大规模客服 Agent 如何结合上下文、人工迭代、LLM judge 和线上指标 | 进阶 |
+| 研发效率 | The Impact of AI on Developer Productivity: Evidence from GitHub Copilot | 论文 | 2023-02-13 | https://arxiv.org/abs/2302.06590 | 作为研发提效场景里“必须有对照和指标”的实证材料 | 入门到进阶 |
 
 ## 开源项目
 
@@ -34,6 +41,8 @@
 | MCP + Skill | Model Context Protocol GitHub organization | 开源组织 | https://github.com/modelcontextprotocol | MCP 规范、SDK 和示例实现的主要代码入口 | 入门到进阶 |
 | Harness 工程 | OpenAI Evals | 开源项目 | https://github.com/openai/evals | LLM 和 LLM 系统评测框架与 benchmark registry | 进阶 |
 | Harness/Loop 工程 | DSPy | 开源项目 | https://github.com/stanfordnlp/dspy | 用程序结构和优化器替代脆弱 prompt 模板的代表框架 | 进阶 |
+| Harness/RAG 工程 | Ragas | 开源项目/文档 | https://docs.ragas.io/en/stable/ | 参考 RAG 场景的 faithfulness、context precision/recall 等评测思路 | 进阶 |
+| Harness 工程 | LangSmith evaluation concepts | 产品文档 | https://docs.langchain.com/langsmith/evaluation-concepts | 参考 dataset、experiment、evaluator 和 trace 的组织方式 | 进阶 |
 
 ## 待补充
 

@@ -44,7 +44,7 @@
 1. 在 GitHub Pages 上打开 `index.html`，用手机浏览目录并阅读 Markdown 正文。
 2. 到 [sources/README.md](sources/README.md) 查看已经确认的一手资料。
 3. 按自己的工作场景选择一个专题，例如先读 Prompt 工程或 Context 工程。
-4. 到 [scenarios/README.md](scenarios/README.md) 选择一个实践场景；企业试点优先读 [企业级 LLM 实践方案集](scenarios/enterprise-practice-playbook.md)。
+4. 到 [scenarios/README.md](scenarios/README.md) 选择一个实践场景；企业试点先读 [企业级 LLM 实践方案集](scenarios/enterprise-practice-playbook.md)，再进入对应的细分实践文档。
 5. 查看 [inbox/news-suggestions.md](inbox/news-suggestions.md) 和 [gaps/missed-news.md](gaps/missed-news.md)，了解仍在处理的人工建议和漏收候选。
 
 ## 更新规则
