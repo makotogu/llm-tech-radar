@@ -77,6 +77,13 @@ const documents = [
     summary: "把知识转化为流程、输入输出和验收标准。"
   },
   {
+    title: "企业级实践方案集",
+    path: "scenarios/enterprise-practice-playbook.md",
+    category: "scenario",
+    label: "企业",
+    summary: "覆盖六个大节点的企业试点方案、数据口径、验收指标和风险控制。"
+  },
+  {
     title: "Prompt 评审工作流",
     path: "scenarios/prompt-review-workflow.md",
     category: "scenario",

@@ -86,7 +86,7 @@ input {
 .primary-action,
 .secondary-action,
 .reader-actions a,
-.reader-actions button {
+.reader-back {
   min-height: 42px;
   display: inline-flex;
   align-items: center;
@@ -453,12 +453,23 @@ h2 {
 }
 
 .reader-toolbar {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   gap: 16px;
   align-items: center;
-  justify-content: space-between;
   padding: 16px;
   border-bottom: 1px solid var(--line);
+}
+
+.reader-back {
+  cursor: pointer;
+  color: var(--paper);
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+
+.reader-heading {
+  min-width: 0;
 }
 
 .reader-toolbar p {
@@ -476,10 +487,6 @@ h2 {
   display: flex;
   gap: 8px;
   align-items: center;
-}
-
-.reader-actions button {
-  cursor: pointer;
 }
 
 .reader-content {
@@ -691,11 +698,17 @@ h2 {
   }
 
   .reader-toolbar {
-    align-items: start;
+    grid-template-columns: 1fr auto;
+    align-items: center;
   }
 
   .reader-toolbar h2 {
     font-size: 21px;
+  }
+
+  .reader-heading {
+    grid-column: 1 / -1;
+    grid-row: 2;
   }
 
   .reader-content h1 {
@@ -707,12 +720,11 @@ h2 {
   }
 
   .reader-actions {
-    flex-direction: column;
-    align-items: stretch;
+    justify-self: end;
   }
 
   .reader-actions a,
-  .reader-actions button {
+  .reader-back {
     min-height: 38px;
     padding-inline: 10px;
   }
