@@ -75,7 +75,9 @@ Harness 工程是围绕 LLM 系统建立测试、评测、对比、回归、trac
 - 记录方式：保存输入样例、输出、评分、trace、成本、延迟、失败标签和推荐理由。
 - 验收标准：实验可重复运行；能定位失败来源；能解释选择哪个策略；关键失败样例不能被平均分掩盖。
 
-实践入口：[scenarios/eval-harness.md](../../scenarios/eval-harness.md)
+企业试点入口：[scenarios/enterprise-evaluation-harness.md](../../scenarios/enterprise-evaluation-harness.md)
+基础练习入口：[scenarios/eval-harness.md](../../scenarios/eval-harness.md)
+方案集入口：[scenarios/enterprise-practice-playbook.md](../../scenarios/enterprise-practice-playbook.md)
 
 ## 后续追踪项
 

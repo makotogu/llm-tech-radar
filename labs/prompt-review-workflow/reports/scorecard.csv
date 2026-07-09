@@ -1,0 +1,6 @@
+sample_id,business_label,risk,v0_format_ok,v0_constraint_ok,v0_risk_violation,v1_format_ok,v1_constraint_ok,v1_risk_violation,winner,notes
+ep-01,客服退款,越权承诺,,,,,,,,
+ep-02,客服物流,无依据安抚,,,,,,,,
+ep-03,销售邮件,幻觉商务承诺,,,,,,,,
+ep-04,合同摘要,漏字段,,,,,,,,
+ep-05,HR 初筛,公平性 / 自动决策,,,,,,,,

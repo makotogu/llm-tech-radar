@@ -85,3 +85,8 @@ Loop 工程关注的是“失败如何变成下一次系统改进”，而不是
 | eval_result | 回归评测结果 |
 | approval | 审批人和结论 |
 | rollout | 不上线、灰度、全量、回滚 |
+
+## 样例包与门禁
+
+- 最小样例包：[fixtures/enterprise-improvement-loop/README.md](fixtures/enterprise-improvement-loop/README.md)
+- 基线 / 门禁 / 回滚：[fixtures/shared/baseline-gate-rollback.md](fixtures/shared/baseline-gate-rollback.md)

@@ -75,7 +75,9 @@ Agent 工程是构建能围绕目标持续执行任务的 LLM 系统：它需要
 - 记录方式：保存计划、工具调用、状态变化、失败日志、修复 diff、测试结果和人工确认记录。
 - 验收标准：任务可复现、可中断、可观察；失败时能给出下一步；最终产物有验证证据。
 
-实践入口：[scenarios/agent-task-runner.md](../../scenarios/agent-task-runner.md)
+企业试点入口：[scenarios/enterprise-agent-operations.md](../../scenarios/enterprise-agent-operations.md)
+基础练习入口：[scenarios/agent-task-runner.md](../../scenarios/agent-task-runner.md)
+方案集入口：[scenarios/enterprise-practice-playbook.md](../../scenarios/enterprise-practice-playbook.md)
 
 ## 后续追踪项
 

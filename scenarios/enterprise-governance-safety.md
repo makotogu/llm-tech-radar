@@ -85,3 +85,8 @@
 | eval_report | 上线前评测报告 |
 | fallback | 降级或人工接管方案 |
 | review_cycle | 复审周期 |
+
+## 样例包与门禁
+
+- 最小样例包：[fixtures/enterprise-governance-safety/README.md](fixtures/enterprise-governance-safety/README.md)
+- 基线 / 门禁 / 回滚：[fixtures/shared/baseline-gate-rollback.md](fixtures/shared/baseline-gate-rollback.md)

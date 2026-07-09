@@ -76,7 +76,9 @@ Context 工程是围绕“模型本次调用应该看见什么”进行设计的
 - 记录方式：保存候选材料、入选材料、被丢弃原因、最终回答、引用位置和错误案例。
 - 验收标准：关键事实都有来源；无关材料不进入上下文；超预算时能说明降级策略；至少 4/5 个问题能追溯证据。
 
-实践入口：[scenarios/context-assembly-rag.md](../../scenarios/context-assembly-rag.md)
+企业试点入口：[scenarios/enterprise-context-rag-operations.md](../../scenarios/enterprise-context-rag-operations.md)
+基础练习入口：[scenarios/context-assembly-rag.md](../../scenarios/context-assembly-rag.md)
+方案集入口：[scenarios/enterprise-practice-playbook.md](../../scenarios/enterprise-practice-playbook.md)
 
 ## 后续追踪项
 
