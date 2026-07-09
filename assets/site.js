@@ -1,10 +1,38 @@
 const documents = [
   {
+    title: "Lab：Prompt 评审工作流",
+    path: "labs/prompt-review-workflow/README.md",
+    category: "scenario",
+    label: "实验",
+    summary: "对比原始与结构化 prompt 的最小可复现实验，对齐企业 Prompt 样例。"
+  },
+  {
+    title: "贡献指南",
+    path: "CONTRIBUTING.md",
+    category: "source",
+    label: "入口",
+    summary: "线索如何进 inbox、可信度分层、已沉淀完成定义与 PR 检查清单。"
+  },
+  {
+    title: "资料卡片：大规模客服 Agent",
+    path: "sources/cards/nubank-support-agents.md",
+    category: "source",
+    label: "资料",
+    summary: "100M 用户规模客服 Agent 的评测、上下文与线上指标案例。"
+  },
+  {
+    title: "资料卡片：OWASP LLM Top 10",
+    path: "sources/cards/owasp-llm-top10.md",
+    category: "source",
+    label: "资料",
+    summary: "企业 LLM 上线风险清单与门禁映射入口。"
+  },
+  {
     title: "仓库说明",
     path: "README.md",
     category: "source",
     label: "入口",
-    summary: "知识仓库定位、主流程、更新规则和可信度分层。"
+    summary: "默认读者为企业试点负责人；含单一入口路径、主流程与可信度分层。"
   },
   {
     title: "新闻建议收件箱",
@@ -72,6 +100,7 @@ const documents = [
   {
     title: "实践场景总览",
     path: "scenarios/README.md",
+    pilot: true,
     category: "scenario",
     label: "场景",
     summary: "把知识转化为流程、输入输出和验收标准。"
@@ -79,13 +108,15 @@ const documents = [
   {
     title: "企业级实践方案集",
     path: "scenarios/enterprise-practice-playbook.md",
+    pilot: true,
     category: "scenario",
     label: "企业",
-    summary: "覆盖六个大节点的企业试点方案、数据口径、验收指标和风险控制。"
+    summary: "按 L1–L5 风险选题，定义指标口径；细节见企业细分文档。"
   },
   {
     title: "企业 Prompt 运营场景",
     path: "scenarios/enterprise-prompt-operations.md",
+    pilot: true,
     category: "scenario",
     label: "企业",
     summary: "客服、销售、合同、HR、财务等 Prompt 变更的版本、评测和灰度方案。"
@@ -93,6 +124,7 @@ const documents = [
   {
     title: "企业 Context 与 RAG 场景",
     path: "scenarios/enterprise-context-rag-operations.md",
+    pilot: true,
     category: "scenario",
     label: "企业",
     summary: "制度问答、售后工单、研发代码库、销售知识和投研资料的来源化上下文方案。"
@@ -100,6 +132,7 @@ const documents = [
   {
     title: "企业 MCP 与工具接入场景",
     path: "scenarios/enterprise-mcp-tool-operations.md",
+    pilot: true,
     category: "scenario",
     label: "企业",
     summary: "工单、CRM、指标、发布、文档工具的权限、审计和审批设计。"
@@ -107,6 +140,7 @@ const documents = [
   {
     title: "企业 Agent 运营场景",
     path: "scenarios/enterprise-agent-operations.md",
+    pilot: true,
     category: "scenario",
     label: "企业",
     summary: "缺陷修复、运维诊断、数据分析、客户成功和知识库维护的可接管 Agent 流程。"
@@ -114,6 +148,7 @@ const documents = [
   {
     title: "企业 Eval Harness 场景",
     path: "scenarios/enterprise-evaluation-harness.md",
+    pilot: true,
     category: "scenario",
     label: "企业",
     summary: "客服回归、RAG 引用、工具调用、模型替换和模型裁判的评测方案。"
@@ -121,6 +156,7 @@ const documents = [
   {
     title: "企业 Improvement Loop 场景",
     path: "scenarios/enterprise-improvement-loop.md",
+    pilot: true,
     category: "scenario",
     label: "企业",
     summary: "把失败样例转成 Prompt、RAG、知识库和工具流程的可控改进循环。"
@@ -128,6 +164,7 @@ const documents = [
   {
     title: "企业治理与安全场景",
     path: "scenarios/enterprise-governance-safety.md",
+    pilot: true,
     category: "scenario",
     label: "治理",
     summary: "上线门禁、提示注入、供应商风险、敏感数据和人工接管的治理方案。"
@@ -223,11 +260,12 @@ const categoryNames = {
   source: "资料",
   scenario: "场景",
   queue: "线索",
-  template: "模板"
+  template: "模板",
+  enterprise: "企业试点"
 };
 
 const state = {
-  filter: "all",
+  filter: "enterprise",
   query: "",
   currentPath: ""
 };
@@ -241,20 +279,49 @@ const readerCategory = document.querySelector("#reader-category");
 const readerContent = document.querySelector("#reader-content");
 const rawLink = document.querySelector("#raw-link");
 
-document.querySelector("#doc-count").textContent = documents.length;
-
 function normalize(value) {
   return value.toLowerCase().trim();
 }
 
+function isEnterpriseDoc(doc) {
+  return Boolean(doc.pilot) || doc.label === "企业" || doc.label === "治理" || /enterprise-/i.test(doc.path);
+}
+
+function isBasicScenario(doc) {
+  return doc.category === "scenario" && !isEnterpriseDoc(doc) && doc.path !== "scenarios/README.md" && doc.path !== "labs/README.md";
+}
+
 function matchesDocument(doc) {
-  const matchesFilter = state.filter === "all" || doc.category === state.filter;
+  let matchesFilter = false;
+  if (state.filter === "enterprise") {
+    matchesFilter = isEnterpriseDoc(doc) || doc.path === "scenarios/README.md" || doc.path === "scenarios/enterprise-practice-playbook.md";
+  } else if (state.filter === "scenario") {
+    matchesFilter = isBasicScenario(doc);
+  } else if (state.filter === "more") {
+    matchesFilter = doc.category === "queue" || doc.category === "template" || doc.path === "labs/README.md";
+  } else if (state.filter === "all") {
+    matchesFilter = true;
+  } else {
+    matchesFilter = doc.category === state.filter;
+  }
   const haystack = normalize(`${doc.title} ${doc.summary} ${doc.label} ${doc.path}`);
   return matchesFilter && haystack.includes(normalize(state.query));
 }
 
+function sortDocuments(docs) {
+  const rank = (doc) => {
+    if (doc.path.includes("enterprise-practice-playbook")) return 0;
+    if (isEnterpriseDoc(doc)) return 1;
+    if (doc.path === "scenarios/README.md") return 2;
+    if (doc.category === "topic") return 3;
+    if (doc.category === "source") return 4;
+    return 5;
+  };
+  return [...docs].sort((a, b) => rank(a) - rank(b) || a.title.localeCompare(b.title, "zh"));
+}
+
 function renderList() {
-  const visibleDocs = documents.filter(matchesDocument);
+  const visibleDocs = sortDocuments(documents.filter(matchesDocument));
 
   if (!visibleDocs.length) {
     list.innerHTML = '<p class="empty-state">没有匹配的文档。</p>';
@@ -531,7 +598,7 @@ list.addEventListener("click", (event) => {
   if (item) openDocument(item.dataset.path);
 });
 
-readerContent.addEventListener("click", (event) => {
+document.addEventListener("click", (event) => {
   const link = event.target.closest("a[data-doc-path]");
   if (!link) return;
   event.preventDefault();

@@ -84,3 +84,9 @@
 | reviewer_score | 人工质检分 |
 | failure_type | 幻觉、漏字段、错引用、越权承诺、语气问题、升级失败 |
 | decision | 上线、灰度、继续观察、回滚 |
+
+## 样例包与门禁
+
+- 最小样例包：[fixtures/enterprise-prompt-operations/README.md](fixtures/enterprise-prompt-operations/README.md)
+- 基线 / 门禁 / 回滚：[fixtures/shared/baseline-gate-rollback.md](fixtures/shared/baseline-gate-rollback.md)
+- 可复现实验：[labs/prompt-review-workflow](../labs/prompt-review-workflow/)

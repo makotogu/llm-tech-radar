@@ -1,6 +1,12 @@
 # Labs
 
-这里放后续可运行实验、demo、评测脚本和结果报告。首版先保留结构，不放未验证代码。
+这里放可运行实验、demo、评测脚本和结果报告。进入 Labs 前必须有明确问题、验收标准和可复现输入。
+
+## 当前实验
+
+| 实验 | 状态 | 说明 |
+| --- | --- | --- |
+| [prompt-review-workflow](prompt-review-workflow/README.md) | 可用 | 对比原始 vs 结构化 prompt；样例对齐企业 Prompt 运营 |
 
 ## 推荐实验顺序
 
