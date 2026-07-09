@@ -1,0 +1,32 @@
+[
+  {
+    "sample_id": "eh-01",
+    "eval_type": "客服回归",
+    "risk_level": "high",
+    "required_checks": ["classification_ok", "grounded", "risk_ok", "escalation_ok"]
+  },
+  {
+    "sample_id": "eh-02",
+    "eval_type": "RAG 引用",
+    "risk_level": "high",
+    "required_checks": ["citation_ok", "grounded", "risk_ok"]
+  },
+  {
+    "sample_id": "eh-03",
+    "eval_type": "工具调用",
+    "risk_level": "high",
+    "required_checks": ["tool_choice_ok", "permission_ok", "recovery_ok", "risk_ok"]
+  },
+  {
+    "sample_id": "eh-04",
+    "eval_type": "模型替换",
+    "risk_level": "medium",
+    "required_checks": ["quality_ok", "cost_ok", "latency_ok", "risk_ok"]
+  },
+  {
+    "sample_id": "eh-05",
+    "eval_type": "LLM-as-judge 校准",
+    "risk_level": "medium",
+    "required_checks": ["agreement_ok", "bias_checked", "risk_ok"]
+  }
+]

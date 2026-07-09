@@ -39,6 +39,8 @@
 | 企业客服 Agent | Building Customer Support AI Agents at 100M-User Scale | 论文 | 2026-06-07 | https://arxiv.org/abs/2606.08867 | 展示大规模客服 Agent 如何结合上下文、人工迭代、LLM judge 和线上指标 | 进阶 | Agent 工程、Harness 工程 | 企业 Agent 运营、企业 Eval Harness |
 | 研发效率 | The Impact of AI on Developer Productivity: Evidence from GitHub Copilot | 论文 | 2023-02-13 | https://arxiv.org/abs/2302.06590 | 作为研发提效场景里“必须有对照和指标”的实证材料 | 入门到进阶 | Prompt 工程、Harness 工程 | 企业 Prompt 运营 |
 | 安全治理 | Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection | 论文 | 2023-02-23 | https://arxiv.org/abs/2302.12173 | 间接提示注入的代表性研究，说明工具结果和网页内容不可默认信任 | 进阶 | 治理/安全、Context 工程 | 企业治理与安全、企业 MCP |
+| 企业 RAG | Optimizing and Evaluating Enterprise Retrieval-Augmented Generation (RAG): A Content Design Perspective | 论文/实践经验 | 2024-10-01 | https://arxiv.org/abs/2410.12812 | 强调企业 RAG 质量受知识库内容设计、文档结构和人工评测流程影响 | 进阶 | Context 工程、Harness 工程 | 企业 Context 与 RAG、企业 Eval Harness |
+| 企业 RAG 评测 | Case-Aware LLM-as-a-Judge Evaluation for Enterprise-Scale RAG Systems | 论文/评测方法 | 2026-02-23 | https://arxiv.org/abs/2602.20379 | 把 RAG 评测从单轮问答扩展到 case/workflow 对齐和严重度评分 | 进阶 | Harness 工程、Context 工程 | 企业 Eval Harness、企业 Context 与 RAG |
 
 ## 开源项目与评测
 
@@ -56,6 +58,9 @@
 | 主题 | 资料 | 类型 | 发布时间 | 链接 | 为什么重要 | 阶段 | 对应专题 | 对应场景 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 生产案例 | Building Customer Support AI Agents at 100M-User Scale | 论文/案例 | 2026-06-07 | https://arxiv.org/abs/2606.08867 | 带规模、评测和线上指标的客服 Agent 案例，见 [cards/nubank-support-agents.md](cards/nubank-support-agents.md) | 进阶 | Agent、Harness、Context | 企业 Agent、企业 Eval Harness |
+| 研发效率 | The Impact of AI on Developer Productivity | 论文/对照实验 | 2023-02-13 | https://arxiv.org/abs/2302.06590 | 研发提效需要对照、任务边界和质量指标，见 [cards/github-copilot-productivity.md](cards/github-copilot-productivity.md) | 入门到进阶 | Prompt、Harness、Agent | 企业 Prompt、企业 Eval Harness |
+| 企业 RAG | Enterprise RAG: Content Design Perspective | 论文/实践经验 | 2024-10-01 | https://arxiv.org/abs/2410.12812 | 把文档治理和人工评测纳入 RAG 项目，见 [cards/enterprise-rag-content-design.md](cards/enterprise-rag-content-design.md) | 进阶 | Context、Harness | 企业 Context 与 RAG |
+| 企业 RAG 评测 | Case-Aware LLM-as-a-Judge Evaluation | 论文/评测方法 | 2026-02-23 | https://arxiv.org/abs/2602.20379 | 评测多轮 case/workflow，而不是只看单轮 QA 总分，见 [cards/case-aware-rag-evaluation.md](cards/case-aware-rag-evaluation.md) | 进阶 | Harness、Context | 企业 Eval Harness |
 | 安全治理 | Anthropic: Mitigating prompt injection | 工程博客 | 持续更新 | https://docs.anthropic.com/en/docs/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks | 厂商侧对越狱与注入防护的工程建议，需与 OWASP/NIST 交叉核验 | 进阶 | 治理/安全 | 企业治理与安全 |
 | 安全治理 | OpenAI: Prompt injections and tool use | 官方安全说明 | 持续更新 | https://developers.openai.com/api/docs/guides/safety-best-practices | 工具调用场景下的注入与权限风险入口 | 进阶 | 治理/安全、MCP + Skill | 企业 MCP、企业治理与安全 |
 

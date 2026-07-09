@@ -1,0 +1,112 @@
+[
+  {
+    "doc_id": "HR-EXP-SH-v3",
+    "title": "上海报销制度 v3",
+    "source_type": "policy",
+    "tenant": "internal",
+    "region": "shanghai",
+    "version": "v3",
+    "status": "active",
+    "sensitivity": "internal",
+    "summary": "上海办公室餐费报销上限与审批规则"
+  },
+  {
+    "doc_id": "HR-EXP-BJ-v2",
+    "title": "北京报销制度 v2",
+    "source_type": "policy",
+    "tenant": "internal",
+    "region": "beijing",
+    "version": "v2",
+    "status": "expired",
+    "sensitivity": "internal",
+    "summary": "北京办公室旧版餐费报销上限"
+  },
+  {
+    "doc_id": "TICKET-A-4821",
+    "title": "客户 A 投诉工单 4821",
+    "source_type": "ticket",
+    "tenant": "customer-a",
+    "region": "global",
+    "version": "2026-07",
+    "status": "active",
+    "sensitivity": "customer",
+    "summary": "客户 A 关于交付延期的投诉结论"
+  },
+  {
+    "doc_id": "TICKET-B-7788",
+    "title": "客户 B 投诉工单 7788",
+    "source_type": "ticket",
+    "tenant": "customer-b",
+    "region": "global",
+    "version": "2026-07",
+    "status": "active",
+    "sensitivity": "customer",
+    "summary": "客户 B 的合同争议处理记录"
+  },
+  {
+    "doc_id": "CODE-payments-retry",
+    "title": "payments/retry.ts",
+    "source_type": "code",
+    "tenant": "internal",
+    "region": "global",
+    "version": "commit-abc123",
+    "status": "active",
+    "sensitivity": "source",
+    "summary": "支付重试入口、退避策略和测试引用"
+  },
+  {
+    "doc_id": "DRAFT-payment-design",
+    "title": "支付草稿设计文档",
+    "source_type": "draft",
+    "tenant": "internal",
+    "region": "global",
+    "version": "draft",
+    "status": "unreviewed",
+    "sensitivity": "source",
+    "summary": "未审查的支付重试重构设想"
+  },
+  {
+    "doc_id": "PRICE-2026Q2",
+    "title": "2026Q2 官方价格政策",
+    "source_type": "policy",
+    "tenant": "internal",
+    "region": "global",
+    "version": "2026Q2",
+    "status": "active",
+    "sensitivity": "internal",
+    "summary": "公开价是否含实施服务及折扣审批"
+  },
+  {
+    "doc_id": "SALES-note-amy",
+    "title": "销售个人笔记",
+    "source_type": "note",
+    "tenant": "internal",
+    "region": "global",
+    "version": "personal",
+    "status": "unreviewed",
+    "sensitivity": "internal",
+    "summary": "个人整理的价格口径，未经过审批"
+  },
+  {
+    "doc_id": "ANN-2026-Q2",
+    "title": "公司 2026Q2 公告原文",
+    "source_type": "filing",
+    "tenant": "public",
+    "region": "global",
+    "version": "2026Q2",
+    "status": "active",
+    "sensitivity": "public",
+    "summary": "公司营收同比和分部收入"
+  },
+  {
+    "doc_id": "MEDIA-Q2-summary",
+    "title": "媒体二手解读",
+    "source_type": "media",
+    "tenant": "public",
+    "region": "global",
+    "version": "2026Q2",
+    "status": "active",
+    "sensitivity": "public",
+    "summary": "二手报道对财报的摘要和观点"
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "sample_id": "er-01",
+    "question": "上海办公室报销餐费上限是多少？",
+    "required_docs": ["HR-EXP-SH-v3"],
+    "forbidden_docs": ["HR-EXP-BJ-v2"],
+    "risk": "过期/错地域引用"
+  },
+  {
+    "sample_id": "er-02",
+    "question": "客户 A 上次投诉结论是什么？",
+    "required_docs": ["TICKET-A-4821"],
+    "forbidden_docs": ["TICKET-B-7788"],
+    "risk": "跨客户资料污染"
+  },
+  {
+    "sample_id": "er-03",
+    "question": "支付模块的重试逻辑在哪？",
+    "required_docs": ["CODE-payments-retry"],
+    "forbidden_docs": ["DRAFT-payment-design"],
+    "risk": "未审查资料被引用"
+  },
+  {
+    "sample_id": "er-04",
+    "question": "当前公开价是否含实施服务？",
+    "required_docs": ["PRICE-2026Q2"],
+    "forbidden_docs": ["SALES-note-amy"],
+    "risk": "非官方价格承诺"
+  },
+  {
+    "sample_id": "er-05",
+    "question": "某公告里的营收同比是多少？",
+    "required_docs": ["ANN-2026-Q2"],
+    "forbidden_docs": ["MEDIA-Q2-summary"],
+    "risk": "二手报道当一手事实"
+  }
+]

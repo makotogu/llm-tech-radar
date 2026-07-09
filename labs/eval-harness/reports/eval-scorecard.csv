@@ -1,0 +1,11 @@
+candidate,sample_id,eval_type,risk_level,passed_checks,total_checks,score,high_risk_fail,failure_type
+baseline,eh-01,客服回归,high,1,4,0.25,1,high_risk_average_masking
+baseline,eh-02,RAG 引用,high,0,3,0.00,1,unsupported_answer
+baseline,eh-03,工具调用,high,1,4,0.25,1,permission_bypass
+baseline,eh-04,模型替换,medium,3,4,0.75,0,latency_regression
+baseline,eh-05,LLM-as-judge 校准,medium,1,3,0.33,0,judge_uncalibrated
+guarded,eh-01,客服回归,high,4,4,1.00,0,
+guarded,eh-02,RAG 引用,high,3,3,1.00,0,
+guarded,eh-03,工具调用,high,4,4,1.00,0,
+guarded,eh-04,模型替换,medium,4,4,1.00,0,
+guarded,eh-05,LLM-as-judge 校准,medium,3,3,1.00,0,
