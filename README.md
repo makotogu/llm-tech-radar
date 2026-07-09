@@ -4,6 +4,8 @@
 
 仓库不按月报组织，也不追求定期生成趋势总结。时间只作为资料属性保留，核心结构是知识对象和处理流程。
 
+**默认读者：企业试点负责人。** 手机阅读入口见 [GitHub Pages](https://makotogu.github.io/llm-tech-radar/)。
+
 首批沉淀主线：
 
 | 技术节点 | 关注问题 | 入口 |
@@ -14,6 +16,7 @@
 | Agent 工程 | 如何构建能规划、调用工具、保存状态和恢复失败的系统 | [topics/agent-engineering](topics/agent-engineering/README.md) |
 | Harness 工程 | 如何评测、对比、回归和观察 LLM 系统 | [topics/harness-engineering](topics/harness-engineering/README.md) |
 | Loop 工程 | 如何设计执行、反馈、修正、再执行的闭环 | [topics/loop-engineering](topics/loop-engineering/README.md) |
+| 治理/安全 | 如何设置上线门禁、权限、敏感数据和人工接管 | [scenarios/enterprise-governance-safety.md](scenarios/enterprise-governance-safety.md) |
 
 ## 仓库结构
 
@@ -29,6 +32,17 @@
 └── templates/       # 新闻建议、漏收候选、专题、资料卡片、场景模板
 ```
 
+## 企业试点负责人入口
+
+按下面 4 步立项，不要从模型能力清单出发：
+
+1. 打开 [企业级 LLM 实践方案集](scenarios/enterprise-practice-playbook.md)，按风险与数据就绪度选题。
+2. 进入对应企业细分场景，确认适用边界、资料地址、基线指标和门禁。
+3. 回查 [sources/README.md](sources/README.md) 与相关 `topics/*/README.md`，核对一手依据。
+4. 有可复现实验时进入 [labs/](labs/README.md)；仍在处理的线索看 [inbox/](inbox/news-suggestions.md) 与 [gaps/](gaps/missed-news.md)。
+
+风险由低到高建议顺序：只读问答 / Prompt 运营 → Context 与 RAG → MCP 工具接入 → Agent 自动执行 → 带写入的 Improvement Loop。治理与安全门禁贯穿全程，见 [企业治理与安全场景](scenarios/enterprise-governance-safety.md)。
+
 ## 主流程
 
 1. 收到人工新闻建议后，先记录到 [inbox/news-suggestions.md](inbox/news-suggestions.md)。
@@ -36,14 +50,6 @@
 3. 对已确认有价值的线索，至少沉淀到一个知识位置：`sources/README.md`、`topics/*/README.md`、`scenarios/*.md` 或 `labs/`。
 4. 发现疑似漏收新闻时，先记录到 [gaps/missed-news.md](gaps/missed-news.md)，只写“候选新闻 + 需要核验的问题”。
 5. 漏收候选经过人工核验后，转入新闻建议收件箱或直接沉淀到对应知识位置。
-
-## 推荐阅读路径
-
-1. 到 [sources/README.md](sources/README.md) 查看已经确认的一手资料。
-2. 按自己的工作场景选择一个专题，例如先读 Prompt 工程或 Context 工程。
-3. 到 [scenarios/README.md](scenarios/README.md) 选择一个实践场景；企业试点先读 [企业级 LLM 实践方案集](scenarios/enterprise-practice-playbook.md)，再进入对应的细分实践文档。
-4. 查看 [inbox/news-suggestions.md](inbox/news-suggestions.md)，了解仍在处理的人工建议。
-5. 查看 [gaps/missed-news.md](gaps/missed-news.md)，了解疑似遗漏但尚未核验的候选新闻。
 
 ## 更新规则
 

@@ -76,7 +76,9 @@ Loop 工程是设计“执行、观察、反馈、修正、再执行”的闭环
 - 记录方式：保存每轮输入、反馈、修正理由、重试次数、分数变化、成本和是否触发人工升级。
 - 验收标准：失败能被分类，重试次数受控，最终结果优于单次执行；无收益或高风险样例能及时停止。
 
-实践入口：[scenarios/improvement-loop.md](../../scenarios/improvement-loop.md)
+企业试点入口：[scenarios/enterprise-improvement-loop.md](../../scenarios/enterprise-improvement-loop.md)
+基础练习入口：[scenarios/improvement-loop.md](../../scenarios/improvement-loop.md)
+方案集入口：[scenarios/enterprise-practice-playbook.md](../../scenarios/enterprise-practice-playbook.md)
 
 ## 后续追踪项
 

@@ -76,7 +76,9 @@ MCP 是连接模型应用与外部工具、资源和数据源的开放协议。S
 - 记录方式：保存工具注册清单、输入参数、返回结果、审批记录、失败样例和最终产物。
 - 验收标准：工具可发现、参数明确、敏感操作需要确认、调用可审计；至少 3 个样例中没有误用高风险工具。
 
-实践入口：[scenarios/mcp-skill-tool-workflow.md](../../scenarios/mcp-skill-tool-workflow.md)
+企业试点入口：[scenarios/enterprise-mcp-tool-operations.md](../../scenarios/enterprise-mcp-tool-operations.md)
+基础练习入口：[scenarios/mcp-skill-tool-workflow.md](../../scenarios/mcp-skill-tool-workflow.md)
+方案集入口：[scenarios/enterprise-practice-playbook.md](../../scenarios/enterprise-practice-playbook.md)
 
 ## 后续追踪项
 
