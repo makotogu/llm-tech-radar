@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light">
     <title>LLM 知识仓库 · 企业试点手册</title>
-    <meta name="description" content="面向企业试点负责人的 LLM 知识仓库阅读入口：从实践方案集选题，进入企业场景、资料索引与技术专题。">
+    <meta name="description" content="面向企业试点负责人的 LLM 知识仓库阅读入口：按风险等级进入企业场景、资料证据、实验与专题依据。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600;700&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
         <div class="hero-copy">
           <p class="brand-lockup">LLM 知识仓库</p>
           <h1 id="page-title">为企业试点负责人准备的落地入口</h1>
-          <p class="hero-text">先按风险选题，再进入企业场景、一手资料与专题依据。不要从模型能力清单出发。</p>
+          <p class="hero-text">按风险等级进入企业场景、资料证据和可运行实验。不要从模型能力清单出发。</p>
           <div class="hero-actions">
             <a href="?doc=scenarios/enterprise-practice-playbook.md" class="primary-action" data-doc-path="scenarios/enterprise-practice-playbook.md">打开实践方案集</a>
           </div>
@@ -37,10 +37,10 @@
           <div class="grid-plane">
             <span style="--i:0">L1 Prompt</span>
             <span style="--i:1">L2 Context</span>
-            <span style="--i:2">L3 MCP</span>
+            <span style="--i:2">L3 Tools</span>
             <span style="--i:3">L4 Agent</span>
             <span style="--i:4">L5 Loop</span>
-            <span style="--i:5">治理门禁</span>
+            <span style="--i:5">Evidence</span>
           </div>
         </div>
       </section>
@@ -82,11 +82,28 @@
 
         <nav class="filter-tabs" aria-label="文档分类">
           <button class="active" type="button" data-filter="enterprise">企业试点</button>
+          <button type="button" data-filter="lab">实验</button>
+          <button type="button" data-filter="proof">资料证据</button>
           <button type="button" data-filter="topic">专题</button>
           <button type="button" data-filter="source">资料</button>
           <button type="button" data-filter="scenario">基础场景</button>
           <button type="button" data-filter="more">其他</button>
         </nav>
+
+        <div class="risk-tools" aria-label="风险等级筛选">
+          <button class="active" type="button" data-risk="all">全部风险</button>
+          <button type="button" data-risk="L1">L1 Prompt</button>
+          <button type="button" data-risk="L2">L2 Context</button>
+          <button type="button" data-risk="L3">L3 Tools</button>
+          <button type="button" data-risk="L4">L4 Agent</button>
+          <button type="button" data-risk="L5">L5 Loop</button>
+          <button type="button" data-risk="gate">治理</button>
+        </div>
+
+        <div class="library-status" aria-live="polite">
+          <span id="visible-count">0 篇</span>
+          <span id="active-filter-copy">企业试点</span>
+        </div>
 
         <div class="doc-list" id="doc-list" aria-live="polite"></div>
       </section>
@@ -109,6 +126,6 @@
       </article>
     </aside>
 
-    <script src="assets/site.js?v=pilot-redesign-v1" defer></script>
+    <script src="assets/site.js?v=pilot-copper-v2" defer></script>
   </body>
 </html>

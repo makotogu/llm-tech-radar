@@ -2,9 +2,26 @@ const documents = [
   {
     title: "Lab：Prompt 评审工作流",
     path: "labs/prompt-review-workflow/README.md",
+    risk: ["lab", "L1"],
     category: "scenario",
     label: "实验",
     summary: "对比原始与结构化 prompt 的最小可复现实验，对齐企业 Prompt 样例。"
+  },
+  {
+    title: "Lab：Context Assembly RAG",
+    path: "labs/context-assembly-rag/README.md",
+    risk: ["lab", "L2"],
+    category: "scenario",
+    label: "实验",
+    summary: "比较 baseline 与 governed 检索，检查引用、过期、权限和来源等级。"
+  },
+  {
+    title: "Lab：Eval Harness",
+    path: "labs/eval-harness/README.md",
+    risk: ["lab", "L1", "L2", "L3", "L4", "L5"],
+    category: "scenario",
+    label: "实验",
+    summary: "用固定样例比较候选系统，输出逐样例 scorecard 与候选汇总。"
   },
   {
     title: "贡献指南",
@@ -16,6 +33,7 @@ const documents = [
   {
     title: "资料卡片：大规模客服 Agent",
     path: "sources/cards/nubank-support-agents.md",
+    risk: ["proof", "L4"],
     category: "source",
     label: "资料",
     summary: "100M 用户规模客服 Agent 的评测、上下文与线上指标案例。"
@@ -23,9 +41,34 @@ const documents = [
   {
     title: "资料卡片：OWASP LLM Top 10",
     path: "sources/cards/owasp-llm-top10.md",
+    risk: ["proof", "gate"],
     category: "source",
     label: "资料",
     summary: "企业 LLM 上线风险清单与门禁映射入口。"
+  },
+  {
+    title: "资料卡片：GitHub Copilot 提效实验",
+    path: "sources/cards/github-copilot-productivity.md",
+    risk: ["proof", "L1"],
+    category: "source",
+    label: "资料",
+    summary: "带对照实验的研发提效资料，用于设计企业内部效率评测。"
+  },
+  {
+    title: "资料卡片：企业 RAG 内容设计",
+    path: "sources/cards/enterprise-rag-content-design.md",
+    risk: ["proof", "L2"],
+    category: "source",
+    label: "资料",
+    summary: "说明企业 RAG 效果受知识库内容设计、文档结构和人工评测影响。"
+  },
+  {
+    title: "资料卡片：Case-aware RAG 评测",
+    path: "sources/cards/case-aware-rag-evaluation.md",
+    risk: ["proof", "L2"],
+    category: "source",
+    label: "资料",
+    summary: "把 RAG 评测扩展到 case、workflow 与严重度评分。"
   },
   {
     title: "仓库说明",
@@ -101,6 +144,7 @@ const documents = [
     title: "实践场景总览",
     path: "scenarios/README.md",
     pilot: true,
+    risk: ["all"],
     category: "scenario",
     label: "场景",
     summary: "把知识转化为流程、输入输出和验收标准。"
@@ -109,6 +153,7 @@ const documents = [
     title: "企业级实践方案集",
     path: "scenarios/enterprise-practice-playbook.md",
     pilot: true,
+    risk: ["all", "L1", "L2", "L3", "L4", "L5", "gate"],
     category: "scenario",
     label: "企业",
     summary: "按 L1–L5 风险选题，定义指标口径；细节见企业细分文档。"
@@ -117,6 +162,7 @@ const documents = [
     title: "企业 Prompt 运营场景",
     path: "scenarios/enterprise-prompt-operations.md",
     pilot: true,
+    risk: ["L1"],
     category: "scenario",
     label: "企业",
     summary: "客服、销售、合同、HR、财务等 Prompt 变更的版本、评测和灰度方案。"
@@ -125,6 +171,7 @@ const documents = [
     title: "企业 Context 与 RAG 场景",
     path: "scenarios/enterprise-context-rag-operations.md",
     pilot: true,
+    risk: ["L2"],
     category: "scenario",
     label: "企业",
     summary: "制度问答、售后工单、研发代码库、销售知识和投研资料的来源化上下文方案。"
@@ -133,6 +180,7 @@ const documents = [
     title: "企业 MCP 与工具接入场景",
     path: "scenarios/enterprise-mcp-tool-operations.md",
     pilot: true,
+    risk: ["L3"],
     category: "scenario",
     label: "企业",
     summary: "工单、CRM、指标、发布、文档工具的权限、审计和审批设计。"
@@ -141,6 +189,7 @@ const documents = [
     title: "企业 Agent 运营场景",
     path: "scenarios/enterprise-agent-operations.md",
     pilot: true,
+    risk: ["L4"],
     category: "scenario",
     label: "企业",
     summary: "缺陷修复、运维诊断、数据分析、客户成功和知识库维护的可接管 Agent 流程。"
@@ -149,6 +198,7 @@ const documents = [
     title: "企业 Eval Harness 场景",
     path: "scenarios/enterprise-evaluation-harness.md",
     pilot: true,
+    risk: ["L1", "L2", "L3", "L4", "L5"],
     category: "scenario",
     label: "企业",
     summary: "客服回归、RAG 引用、工具调用、模型替换和模型裁判的评测方案。"
@@ -157,6 +207,7 @@ const documents = [
     title: "企业 Improvement Loop 场景",
     path: "scenarios/enterprise-improvement-loop.md",
     pilot: true,
+    risk: ["L5"],
     category: "scenario",
     label: "企业",
     summary: "把失败样例转成 Prompt、RAG、知识库和工具流程的可控改进循环。"
@@ -165,6 +216,7 @@ const documents = [
     title: "企业治理与安全场景",
     path: "scenarios/enterprise-governance-safety.md",
     pilot: true,
+    risk: ["gate", "L1", "L2", "L3", "L4", "L5"],
     category: "scenario",
     label: "治理",
     summary: "上线门禁、提示注入、供应商风险、敏感数据和人工接管的治理方案。"
@@ -266,6 +318,7 @@ const categoryNames = {
 
 const state = {
   filter: "enterprise",
+  risk: "all",
   query: "",
   currentPath: ""
 };
@@ -278,6 +331,9 @@ const readerTitle = document.querySelector("#reader-title");
 const readerCategory = document.querySelector("#reader-category");
 const readerContent = document.querySelector("#reader-content");
 const rawLink = document.querySelector("#raw-link");
+const riskTabs = document.querySelectorAll("[data-risk]");
+const visibleCount = document.querySelector("#visible-count");
+const activeFilterCopy = document.querySelector("#active-filter-copy");
 
 function normalize(value) {
   return value.toLowerCase().trim();
@@ -287,6 +343,14 @@ function isEnterpriseDoc(doc) {
   return Boolean(doc.pilot) || doc.label === "企业" || doc.label === "治理" || /enterprise-/i.test(doc.path);
 }
 
+function isLabDoc(doc) {
+  return doc.label === "实验" || doc.path.startsWith("labs/");
+}
+
+function isProofDoc(doc) {
+  return doc.path.startsWith("sources/cards/");
+}
+
 function isBasicScenario(doc) {
   return doc.category === "scenario" && !isEnterpriseDoc(doc) && doc.path !== "scenarios/README.md" && doc.path !== "labs/README.md";
 }
@@ -294,7 +358,11 @@ function isBasicScenario(doc) {
 function matchesDocument(doc) {
   let matchesFilter = false;
   if (state.filter === "enterprise") {
-    matchesFilter = isEnterpriseDoc(doc) || doc.path === "scenarios/README.md" || doc.path === "scenarios/enterprise-practice-playbook.md";
+    matchesFilter = isEnterpriseDoc(doc) || isLabDoc(doc) || isProofDoc(doc) || doc.path === "scenarios/README.md" || doc.path === "scenarios/enterprise-practice-playbook.md";
+  } else if (state.filter === "lab") {
+    matchesFilter = isLabDoc(doc);
+  } else if (state.filter === "proof") {
+    matchesFilter = isProofDoc(doc);
   } else if (state.filter === "scenario") {
     matchesFilter = isBasicScenario(doc);
   } else if (state.filter === "more") {
@@ -305,16 +373,25 @@ function matchesDocument(doc) {
     matchesFilter = doc.category === state.filter;
   }
   const haystack = normalize(`${doc.title} ${doc.summary} ${doc.label} ${doc.path}`);
-  return matchesFilter && haystack.includes(normalize(state.query));
+  return matchesFilter && matchesRisk(doc) && haystack.includes(normalize(state.query));
+}
+
+function matchesRisk(doc) {
+  if (state.risk === "all") return true;
+  const risks = Array.isArray(doc.risk) ? doc.risk : [];
+  if (state.risk === "gate") return risks.includes("gate") || doc.label === "治理";
+  return risks.includes(state.risk);
 }
 
 function sortDocuments(docs) {
   const rank = (doc) => {
     if (doc.path.includes("enterprise-practice-playbook")) return 0;
     if (isEnterpriseDoc(doc)) return 1;
-    if (doc.path === "scenarios/README.md") return 2;
-    if (doc.category === "topic") return 3;
-    if (doc.category === "source") return 4;
+    if (isLabDoc(doc)) return 2;
+    if (isProofDoc(doc)) return 3;
+    if (doc.path === "scenarios/README.md") return 4;
+    if (doc.category === "topic") return 5;
+    if (doc.category === "source") return 6;
     return 5;
   };
   return [...docs].sort((a, b) => rank(a) - rank(b) || a.title.localeCompare(b.title, "zh"));
@@ -325,6 +402,7 @@ function renderList() {
 
   if (!visibleDocs.length) {
     list.innerHTML = '<p class="empty-state">没有匹配的文档。</p>';
+    updateStatus(0);
     return;
   }
 
@@ -340,6 +418,7 @@ function renderList() {
       <span class="doc-arrow" aria-hidden="true">→</span>
     </button>
   `).join("");
+  updateStatus(visibleDocs.length);
 }
 
 function setFilter(filter) {
@@ -348,6 +427,21 @@ function setFilter(filter) {
     tab.classList.toggle("active", tab.dataset.filter === filter);
   });
   renderList();
+}
+
+function setRisk(risk) {
+  state.risk = risk;
+  riskTabs.forEach((tab) => {
+    tab.classList.toggle("active", tab.dataset.risk === risk);
+  });
+  renderList();
+}
+
+function updateStatus(count) {
+  const filterName = document.querySelector(`[data-filter="${state.filter}"]`)?.textContent || "文档";
+  const riskName = document.querySelector(`[data-risk="${state.risk}"]`)?.textContent || "全部风险";
+  if (visibleCount) visibleCount.textContent = `${count} 篇`;
+  if (activeFilterCopy) activeFilterCopy.textContent = `${filterName} · ${riskName}`;
 }
 
 async function openDocument(path, options = {}) {
@@ -586,6 +680,10 @@ function escapeAttribute(value) {
 
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => setFilter(tab.dataset.filter));
+});
+
+riskTabs.forEach((tab) => {
+  tab.addEventListener("click", () => setRisk(tab.dataset.risk));
 });
 
 search.addEventListener("input", (event) => {
