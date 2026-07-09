@@ -46,5 +46,6 @@
 
 ## 后续实验
 
+- 已落地：[labs/prompt-review-workflow](../labs/prompt-review-workflow/README.md)（5 条样例、v0/v1 prompt、评分表）
 - 对比无 rubric 和有 rubric 的输出质量。
-- 把 prompt 版本纳入 Eval Harness 回归。
+- 把同一批样例接入 `labs/eval-harness/`，比较多版本策略。

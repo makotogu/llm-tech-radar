@@ -4,6 +4,8 @@
 
 **企业试点负责人请先读** [企业级 LLM 实践方案集](enterprise-practice-playbook.md)，按风险等级选题后再进入细分文档。
 
+样例包、基线表头与门禁见 [fixtures/](fixtures/shared/baseline-gate-rollback.md)。
+
 ## 企业试点场景
 
 | 场景 | 对应专题 | 风险等级 | 目标 |
