@@ -16,6 +16,8 @@ Context 工程的企业价值不在“塞更多资料”，而在于把来源、
 | OpenAI File search | https://developers.openai.com/api/docs/guides/file-search | 参考文件检索、向量存储和回答引用的产品化路径 |
 | Google Cloud RAG Engine overview | https://cloud.google.com/vertex-ai/generative-ai/docs/rag-overview | 参考企业级 RAG Engine 的索引、检索和管理思路 |
 | Nubank customer support agents paper | https://arxiv.org/abs/2606.08867 | 参考大规模客服 Agent 中上下文、评测和线上指标的结合方式 |
+| Enterprise RAG content design paper | https://arxiv.org/abs/2410.12812 | 参考文档结构、内容治理和 human-in-the-lead 评测对企业 RAG 的影响 |
+| Case-aware RAG evaluation paper | https://arxiv.org/abs/2602.20379 | 参考多轮 case/workflow 场景里的 RAG 评测字段和严重度评分 |
 
 ## 场景 1：制度知识库问答
 

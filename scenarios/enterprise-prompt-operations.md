@@ -16,6 +16,7 @@
 | Anthropic Prompt engineering overview | https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview | 用于补充企业场景里的明确指令、示例、角色和不确定性处理 |
 | OpenAI Evals cookbook | https://developers.openai.com/cookbook/examples/evaluation/getting_started_with_openai_evals | 把 Prompt 改动纳入可重复评测，而不是靠主观体验判断 |
 | GitHub Copilot productivity paper | https://arxiv.org/abs/2302.06590 | 作为研发场景里“效率提升必须实测”的案例材料 |
+| GitHub Copilot productivity card | ../sources/cards/github-copilot-productivity.md | 用资料卡方式沉淀实验方法、指标边界和注意事项 |
 
 ## 场景 1：客服答复标准化
 

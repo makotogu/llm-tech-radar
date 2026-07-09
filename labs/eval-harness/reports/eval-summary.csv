@@ -1,0 +1,3 @@
+candidate,cases,average_score,failed_cases,high_risk_failures,recommendation
+baseline,5,0.32,5,3,hold
+guarded,5,1.00,0,0,canary_candidate

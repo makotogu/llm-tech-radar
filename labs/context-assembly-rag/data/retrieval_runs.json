@@ -1,0 +1,62 @@
+[
+  {
+    "strategy": "baseline",
+    "sample_id": "er-01",
+    "retrieved_docs": ["HR-EXP-BJ-v2", "HR-EXP-SH-v3"],
+    "decision": "needs_human_review"
+  },
+  {
+    "strategy": "baseline",
+    "sample_id": "er-02",
+    "retrieved_docs": ["TICKET-B-7788", "TICKET-A-4821"],
+    "decision": "needs_human_review"
+  },
+  {
+    "strategy": "baseline",
+    "sample_id": "er-03",
+    "retrieved_docs": ["DRAFT-payment-design", "CODE-payments-retry"],
+    "decision": "needs_human_review"
+  },
+  {
+    "strategy": "baseline",
+    "sample_id": "er-04",
+    "retrieved_docs": ["SALES-note-amy", "PRICE-2026Q2"],
+    "decision": "needs_human_review"
+  },
+  {
+    "strategy": "baseline",
+    "sample_id": "er-05",
+    "retrieved_docs": ["MEDIA-Q2-summary", "ANN-2026-Q2"],
+    "decision": "needs_human_review"
+  },
+  {
+    "strategy": "governed",
+    "sample_id": "er-01",
+    "retrieved_docs": ["HR-EXP-SH-v3"],
+    "decision": "answer_with_citation"
+  },
+  {
+    "strategy": "governed",
+    "sample_id": "er-02",
+    "retrieved_docs": ["TICKET-A-4821"],
+    "decision": "answer_with_citation"
+  },
+  {
+    "strategy": "governed",
+    "sample_id": "er-03",
+    "retrieved_docs": ["CODE-payments-retry"],
+    "decision": "answer_with_citation"
+  },
+  {
+    "strategy": "governed",
+    "sample_id": "er-04",
+    "retrieved_docs": ["PRICE-2026Q2"],
+    "decision": "answer_with_citation"
+  },
+  {
+    "strategy": "governed",
+    "sample_id": "er-05",
+    "retrieved_docs": ["ANN-2026-Q2"],
+    "decision": "answer_with_citation"
+  }
+]

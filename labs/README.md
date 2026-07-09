@@ -7,13 +7,15 @@
 | 实验 | 状态 | 说明 |
 | --- | --- | --- |
 | [prompt-review-workflow](prompt-review-workflow/README.md) | 可用 | 对比原始 vs 结构化 prompt；样例对齐企业 Prompt 运营 |
+| [context-assembly-rag](context-assembly-rag/README.md) | 可用 | 比较 baseline 与 governed 检索，检查引用、过期、权限和来源等级 |
+| [eval-harness](eval-harness/README.md) | 可用 | 用固定样例比较候选系统，输出逐样例 scorecard 与候选汇总 |
 
 ## 推荐实验顺序
 
 1. `prompt-review-workflow/`：提示词需求澄清、输出约束和评审。
 2. `context-assembly-rag/`：多来源上下文装配、压缩和引用。
-3. `agent-tool-runner/`：带工具调用、状态记录和失败恢复的任务型 Agent。
-4. `eval-harness/`：对 Prompt、Context 和 Agent 策略做回归评测。
+3. `eval-harness/`：对 Prompt、Context 和 Agent 策略做回归评测。
+4. `agent-tool-runner/`：带工具调用、状态记录和失败恢复的任务型 Agent。
 5. `improvement-loop/`：用 trace 与 eval 结果驱动下一轮修正。
 
 ## 大节点实验说明
