@@ -57,6 +57,10 @@ Loop 工程是设计“执行、观察、反馈、修正、再执行”的闭环
 | 用户反馈闭环 | 把用户纠错转成新样例、规则或知识库更新 | 反馈标签、修复记录、验证样例 |
 | 文档持续改进 | 根据阅读反馈和遗漏清单补充资料、专题和场景 | 缺口清单、更新 diff、验收说明 |
 | 生产质量门禁 | 失败超过阈值时自动停止发布或要求人工确认 | 停止条件、告警、回滚动作 |
+| Grader 校准循环 | 将人工复核差异反馈给评分规则和模型裁判提示 | 偏差清单、校准版本、一致率变化 |
+| 成本优化循环 | 根据 trace 找出高成本调用，调整缓存、压缩或模型路由 | 成本归因、优化动作、质量回归结果 |
+| 安全策略修复循环 | 将红队绕过样例转成规则、prompt 或工具权限修复 | 绕过样例、修复记录、复测结果 |
+| 数据标注改进循环 | 根据低置信样例和评审分歧补充标注指南与样例 | 分歧样例、指南变更、复核一致率 |
 
 ## 边界与风险
 
@@ -72,7 +76,9 @@ Loop 工程是设计“执行、观察、反馈、修正、再执行”的闭环
 - 记录方式：保存每轮输入、反馈、修正理由、重试次数、分数变化、成本和是否触发人工升级。
 - 验收标准：失败能被分类，重试次数受控，最终结果优于单次执行；无收益或高风险样例能及时停止。
 
-实践入口：[scenarios/improvement-loop.md](../../scenarios/improvement-loop.md)
+企业试点入口：[scenarios/enterprise-improvement-loop.md](../../scenarios/enterprise-improvement-loop.md)
+基础练习入口：[scenarios/improvement-loop.md](../../scenarios/improvement-loop.md)
+方案集入口：[scenarios/enterprise-practice-playbook.md](../../scenarios/enterprise-practice-playbook.md)
 
 ## 后续追踪项
 

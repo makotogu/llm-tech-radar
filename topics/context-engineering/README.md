@@ -57,6 +57,10 @@ Context 工程是围绕“模型本次调用应该看见什么”进行设计的
 | 会议/文档总结 | 从长文本中提取议题、决定、风险和后续动作 | 结构化摘要、来源位置、遗漏项 |
 | 个性化助手 | 根据用户偏好、历史行为和当前任务组织上下文 | 偏好卡片、权限边界、更新时间 |
 | 安全隔离 | 防止外部内容把恶意指令混入模型上下文 | 来源标签、引用边界、拒绝规则 |
+| 多租户知识隔离 | 按租户、部门、项目和角色过滤上下文来源 | 权限标签、隔离规则、审计记录 |
+| 时效性敏感问答 | 对价格、政策、库存、排班等易变信息选择最新可信来源 | 生效日期、过期规则、冲突处理 |
+| 多模态资料装配 | 将图片、表格、PDF、日志和文本片段组合成统一证据包 | 资料清单、引用位置、模态转换记录 |
+| 上下文预算优化 | 在固定 token、成本或延迟预算下选择最小充分上下文 | 预算规则、裁剪理由、降级策略 |
 
 ## 边界与风险
 
@@ -72,7 +76,9 @@ Context 工程是围绕“模型本次调用应该看见什么”进行设计的
 - 记录方式：保存候选材料、入选材料、被丢弃原因、最终回答、引用位置和错误案例。
 - 验收标准：关键事实都有来源；无关材料不进入上下文；超预算时能说明降级策略；至少 4/5 个问题能追溯证据。
 
-实践入口：[scenarios/context-assembly-rag.md](../../scenarios/context-assembly-rag.md)
+企业试点入口：[scenarios/enterprise-context-rag-operations.md](../../scenarios/enterprise-context-rag-operations.md)
+基础练习入口：[scenarios/context-assembly-rag.md](../../scenarios/context-assembly-rag.md)
+方案集入口：[scenarios/enterprise-practice-playbook.md](../../scenarios/enterprise-practice-playbook.md)
 
 ## 后续追踪项
 

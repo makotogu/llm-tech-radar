@@ -72,6 +72,11 @@ Context 工程的企业价值不在“塞更多资料”，而在于把来源、
 | 资料支撑 | RAG 论文 + 企业内部投研资料库 |
 | 风险控制 | 投资建议必须人工确认；模型只做资料整理和问题发现 |
 
+## 样例包与门禁
+
+- 最小样例包：[fixtures/enterprise-context-rag-operations/README.md](fixtures/enterprise-context-rag-operations/README.md)
+- 基线 / 门禁 / 回滚：[fixtures/shared/baseline-gate-rollback.md](fixtures/shared/baseline-gate-rollback.md)
+
 ## 最小数据表
 
 | 字段 | 说明 |

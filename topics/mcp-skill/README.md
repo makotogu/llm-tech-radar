@@ -57,6 +57,10 @@ MCP 是连接模型应用与外部工具、资源和数据源的开放协议。S
 | 文档生产 Skill | 封装报告、周报、设计文档、复盘模板和检查流程 | Skill 触发规则、模板、验收清单 |
 | 代码审查 Skill | 复用代码 review 规则、风险分类和输出格式 | 评审 rubric、示例、输出合同 |
 | 多客户端复用 | 在 IDE、桌面助手、网页 Agent 中复用同一能力 | Server 配置、版本策略、兼容约定 |
+| 审批流工具接入 | 将请假、采购、报销等审批动作暴露为受控工具 | 工具 schema、审批状态、审计日志 |
+| 设计系统 Skill | 封装组件规范、文案规则、可访问性检查和截图验收 | 组件清单、检查规则、验收报告 |
+| 安全扫描工具链 | 接入 SAST、依赖漏洞和密钥扫描结果，生成修复建议 | 扫描结果、风险等级、修复清单 |
+| 数据同步运维 Skill | 固化跨系统数据同步检查、补偿和回滚流程 | Runbook、确认点、回滚步骤 |
 
 ## 边界与风险
 
@@ -72,7 +76,9 @@ MCP 是连接模型应用与外部工具、资源和数据源的开放协议。S
 - 记录方式：保存工具注册清单、输入参数、返回结果、审批记录、失败样例和最终产物。
 - 验收标准：工具可发现、参数明确、敏感操作需要确认、调用可审计；至少 3 个样例中没有误用高风险工具。
 
-实践入口：[scenarios/mcp-skill-tool-workflow.md](../../scenarios/mcp-skill-tool-workflow.md)
+企业试点入口：[scenarios/enterprise-mcp-tool-operations.md](../../scenarios/enterprise-mcp-tool-operations.md)
+基础练习入口：[scenarios/mcp-skill-tool-workflow.md](../../scenarios/mcp-skill-tool-workflow.md)
+方案集入口：[scenarios/enterprise-practice-playbook.md](../../scenarios/enterprise-practice-playbook.md)
 
 ## 后续追踪项
 

@@ -56,6 +56,10 @@ Agent 工程是构建能围绕目标持续执行任务的 LLM 系统：它需要
 | 运维诊断 | 读取日志、查询监控、定位异常、提出修复步骤 | trace、假设列表、处置建议 |
 | 文档维护 | 根据变更更新 README、规格、Runbook 和模板 | 变更摘要、链接检查、审阅清单 |
 | 个人助理任务 | 安排日程、整理待办、准备会议材料 | 状态记录、权限审批、最终清单 |
+| 数据迁移助理 | 规划迁移步骤、生成校验脚本、跟踪异常和回滚条件 | 迁移计划、校验报告、风险清单 |
+| 依赖升级 Agent | 读取 changelog、修改配置、修复兼容问题并运行回归测试 | 升级 diff、破坏性变更说明、测试记录 |
+| 采购比价 Agent | 收集供应商资料、规格、报价和风险，生成对比建议 | 来源表、评分矩阵、待确认问题 |
+| 合规检查 Agent | 对文档、流程或代码变更执行规则检查并提出整改项 | 检查 trace、违规证据、整改建议 |
 
 ## 边界与风险
 
@@ -71,7 +75,9 @@ Agent 工程是构建能围绕目标持续执行任务的 LLM 系统：它需要
 - 记录方式：保存计划、工具调用、状态变化、失败日志、修复 diff、测试结果和人工确认记录。
 - 验收标准：任务可复现、可中断、可观察；失败时能给出下一步；最终产物有验证证据。
 
-实践入口：[scenarios/agent-task-runner.md](../../scenarios/agent-task-runner.md)
+企业试点入口：[scenarios/enterprise-agent-operations.md](../../scenarios/enterprise-agent-operations.md)
+基础练习入口：[scenarios/agent-task-runner.md](../../scenarios/agent-task-runner.md)
+方案集入口：[scenarios/enterprise-practice-playbook.md](../../scenarios/enterprise-practice-playbook.md)
 
 ## 后续追踪项
 

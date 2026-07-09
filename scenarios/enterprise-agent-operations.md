@@ -85,3 +85,8 @@
 | human_checkpoint | 人工确认点 |
 | failure | 失败原因 |
 | final_decision | 完成、转人工、回滚、继续追踪 |
+
+## 样例包与门禁
+
+- 最小样例包：[fixtures/enterprise-agent-operations/README.md](fixtures/enterprise-agent-operations/README.md)
+- 基线 / 门禁 / 回滚：[fixtures/shared/baseline-gate-rollback.md](fixtures/shared/baseline-gate-rollback.md)
