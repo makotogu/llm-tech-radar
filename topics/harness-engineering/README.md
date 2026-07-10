@@ -79,6 +79,17 @@ Harness 工程是围绕 LLM 系统建立测试、评测、对比、回归、trac
 基础练习入口：[scenarios/eval-harness.md](../../scenarios/eval-harness.md)
 方案集入口：[scenarios/enterprise-practice-playbook.md](../../scenarios/enterprise-practice-playbook.md)
 
+## 证据链与当前判断
+
+| 证据 | 支撑的判断 | 边界 |
+| --- | --- | --- |
+| [OpenAI Evals](../../sources/cards/openai-evals.md) | 数据集、grader、候选和运行结果需要独立版本化 | 产品 API 会持续变化 |
+| [Case-aware RAG 评测](../../sources/cards/case-aware-rag-evaluation.md) | 平均分必须补充 workflow 和严重失败视图 | 评测维度需要本地校准 |
+| [Nubank 客服 Agent](../../sources/cards/nubank-support-agents.md) | 离线指标需要与人工一致性和线上指标连接 | 相关性不代表所有指标都有预测力 |
+| [DSPy](../../sources/cards/dspy-pipeline-optimization.md) | Harness 可以驱动候选 pipeline 优化 | 错误 metric 会放大错误目标 |
+
+当前判断：Harness 是所有 Prompt、RAG、工具和 Agent 变更的共同质量接口。报告至少同时展示逐样例结果、关键失败、成本和延迟。当前 [Eval Harness Lab](../../labs/eval-harness/README.md) 已能比较候选；下一步需要加入人工复核一致率和安全硬门禁。
+
 ## 后续追踪项
 
 - Agent 过程评测标准。

@@ -80,6 +80,17 @@ Loop 工程是设计“执行、观察、反馈、修正、再执行”的闭环
 基础练习入口：[scenarios/improvement-loop.md](../../scenarios/improvement-loop.md)
 方案集入口：[scenarios/enterprise-practice-playbook.md](../../scenarios/enterprise-practice-playbook.md)
 
+## 证据链与当前判断
+
+| 证据 | 支撑的判断 | 边界 |
+| --- | --- | --- |
+| [DSPy](../../sources/cards/dspy-pipeline-optimization.md) | 优化循环需要固定数据和 metric | 离线最优不代表线上最优 |
+| [Reflexion](https://arxiv.org/abs/2303.11366) | 语言反馈和历史经验可以影响后续尝试 | 研究设置不包含完整企业控制面 |
+| [Self-Refine](https://arxiv.org/abs/2303.17651) | 生成、反馈、精修可形成测试时迭代结构 | 自反馈可能重复或放大错误 |
+| [OpenAI Evals](../../sources/cards/openai-evals.md) | 每轮变化必须回到可比较评测 | grader 也需要校准 |
+
+当前判断：Loop 不是无限重试，而是有预算、有停止条件、有版本回滚的受控变更过程。任何自动改进都必须先通过 Harness，且高风险失败不能被整体分数抵消。当前只有 [Eval Harness Lab](../../labs/eval-harness/README.md) 提供评测基础；缺口是实现最多两轮修正、无收益停止和回滚记录的 Loop Lab。
+
 ## 后续追踪项
 
 - Loop 中哪些步骤适合自动化，哪些必须人工确认。

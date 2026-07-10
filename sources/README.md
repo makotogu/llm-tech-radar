@@ -1,8 +1,24 @@
 # 资料索引
 
-记录规则：优先一手来源；每条资料记录类型、发布时间、链接、重要性、适合阶段，以及对应专题与场景，形成 sources ↔ topics ↔ scenarios 三角索引。最后核验日期：2026-07-09。
+记录规则：优先一手来源；每条资料记录类型、发布时间、链接、重要性、适合阶段，以及对应专题与场景，形成 sources ↔ topics ↔ scenarios 三角索引。最后核验日期：2026-07-10。
 
-高价值单篇可另见 [cards/](cards/)。
+高价值单篇另做证据卡，区分“来源事实、仓库判断、不能证明什么和工程迁移”。
+
+## 证据卡片
+
+| 主题 | 卡片 | 主要用途 |
+| --- | --- | --- |
+| Prompt / Harness | [GitHub Copilot 提效对照实验](cards/github-copilot-productivity.md) | 设计带对照、质量和返工指标的效率试点 |
+| Context | [RAG 基础论文](cards/rag-foundation.md) | 理解参数化模型与外部知识的系统边界 |
+| Context / Harness | [企业 RAG 内容设计](cards/enterprise-rag-content-design.md) | 把文档治理和人工评测纳入 RAG |
+| Context / Harness | [Case-aware RAG 评测](cards/case-aware-rag-evaluation.md) | 评测多轮 case、workflow 和严重失败 |
+| MCP / 安全 | [MCP Security Best Practices](cards/mcp-security-best-practices.md) | 识别授权、凭证、会话和本地服务风险 |
+| Agent | [ReAct](cards/react-reasoning-acting.md) | 理解动作、观察和计划更新的交错流程 |
+| Agent / Harness | [Nubank 大规模客服 Agent](cards/nubank-support-agents.md) | 连接离线评测、人工校准和线上指标 |
+| Harness | [OpenAI Evals](cards/openai-evals.md) | 组织数据集、grader、运行和结果 |
+| Harness / Loop | [DSPy](cards/dspy-pipeline-optimization.md) | 用固定指标优化并比较 LM pipeline |
+| 治理/安全 | [OWASP LLM Top 10](cards/owasp-llm-top10.md) | 建立 LLM 应用威胁建模入口 |
+| 治理/安全 | [NIST AI 600-1](cards/nist-ai-rmf-genai.md) | 连接组织责任、测量证据和风险处置 |
 
 ## 官方文档
 
@@ -24,6 +40,7 @@
 | Harness 工程 | Google Gen AI evaluation service | 官方文档 | 持续更新 | https://cloud.google.com/vertex-ai/generative-ai/docs/models/evaluation-overview | 参考企业评测中的 dataset、metrics、rubric-based 和 computation-based metrics | 进阶 | Harness 工程 | 企业 Eval Harness |
 | 安全治理 | OWASP Top 10 for LLM Applications | 官方项目 | 持续更新 | https://owasp.org/www-project-top-10-for-large-language-model-applications/ | 建立提示注入、越权工具调用、敏感信息泄露等风险检查清单 | 入门到进阶 | 治理/安全 | 企业治理与安全 |
 | 安全治理 | NIST AI Risk Management Framework | 官方框架 | 持续更新 | https://www.nist.gov/itl/ai-risk-management-framework | 建立企业 AI 治理、测量、管理和风险沟通框架 | 进阶 | 治理/安全 | 企业治理与安全 |
+| 安全治理 | NIST AI 600-1 Generative AI Profile | 官方框架 | 2024-07-26，2026-04-08 更新 | https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence | 把生成式 AI 风险映射到 Govern、Map、Measure、Manage，见 [证据卡](cards/nist-ai-rmf-genai.md) | 进阶 | 治理/安全、Harness 工程 | 企业治理与安全、企业 Eval Harness |
 | 安全治理 | OpenAI Safety best practices | 官方文档 | 持续更新 | https://developers.openai.com/api/docs/guides/safety-best-practices | 参考分层防护、上线前控制和安全检查清单 | 入门到进阶 | 治理/安全 | 企业治理与安全 |
 | 安全治理 | OWASP LLM Prompt Injection Prevention Cheat Sheet | 官方项目 | 持续更新 | https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html | 把提示注入从概念落到输入隔离、输出过滤和工具权限控制 | 进阶 | 治理/安全、Prompt 工程 | 企业治理与安全 |
 

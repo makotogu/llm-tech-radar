@@ -37,3 +37,4 @@ python3 src/evaluate_context_pack.py
 - 企业场景：[scenarios/enterprise-context-rag-operations.md](../../scenarios/enterprise-context-rag-operations.md)
 - 样例包：[scenarios/fixtures/enterprise-context-rag-operations/README.md](../../scenarios/fixtures/enterprise-context-rag-operations/README.md)
 - 专题：[topics/context-engineering/README.md](../../topics/context-engineering/README.md)
+- 证据：[RAG 基础论文](../../sources/cards/rag-foundation.md)、[企业 RAG 内容设计](../../sources/cards/enterprise-rag-content-design.md)、[Case-aware RAG 评测](../../sources/cards/case-aware-rag-evaluation.md)

@@ -17,6 +17,8 @@ Loop 工程关注的是“失败如何变成下一次系统改进”，而不是
 | DSPy paper | https://arxiv.org/abs/2310.03714 | 参考用指标优化语言模型 pipeline 的方式 |
 | DSPy GitHub | https://github.com/stanfordnlp/dspy | 参考可执行的 pipeline 优化框架 |
 | OpenAI Evals | https://developers.openai.com/api/docs/guides/evals | 作为每次循环是否改进的评测门禁 |
+| DSPy 证据卡 | ../sources/cards/dspy-pipeline-optimization.md | 明确优化效果对数据集和 metric 的依赖 |
+| OpenAI Evals 证据卡 | ../sources/cards/openai-evals.md | 固定每轮候选、grader、运行结果和失败标签 |
 
 ## 场景 1：测试失败自动修复循环
 

@@ -79,6 +79,16 @@ Agent 工程是构建能围绕目标持续执行任务的 LLM 系统：它需要
 基础练习入口：[scenarios/agent-task-runner.md](../../scenarios/agent-task-runner.md)
 方案集入口：[scenarios/enterprise-practice-playbook.md](../../scenarios/enterprise-practice-playbook.md)
 
+## 证据链与当前判断
+
+| 证据 | 支撑的判断 | 边界 |
+| --- | --- | --- |
+| [ReAct](../../sources/cards/react-reasoning-acting.md) | 动作、观察和计划更新需要交错执行 | benchmark 轨迹不等于生产控制面 |
+| [Nubank 客服 Agent](../../sources/cards/nubank-support-agents.md) | 生产 Agent 需要离线评测、人工校准和线上指标 | 单一组织指标不能直接外推 |
+| [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/) | 状态、工具、guardrail 和 trace 需要显式工程接口 | SDK 不是唯一实现方式 |
+
+当前判断：Agent 的工程边界由可执行动作和失败后果决定，不由“是否多轮”决定。生产系统应优先使用确定性 workflow，在确实需要动态决策时才扩大 Agent 自主度。当前有场景文档但没有工具执行 Lab；缺口是加入可中断状态、审批动作和失败恢复的最小实现。
+
 ## 后续追踪项
 
 - Agent 状态模型：短期工作记忆、长期记忆、任务日志如何分层。

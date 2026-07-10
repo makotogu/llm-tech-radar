@@ -4,7 +4,7 @@
 
 仓库不按月报组织，也不追求定期生成趋势总结。时间只作为资料属性保留，核心结构是知识对象和处理流程。
 
-**默认读者：企业试点负责人。** 手机阅读入口见 [GitHub Pages](https://makotogu.github.io/llm-tech-radar/)。
+仓库面向需要核验 LLM 新闻、理解工程方法或设计实践验证的读者。手机阅读入口见 [GitHub Pages](https://makotogu.github.io/llm-tech-radar/)。
 
 首批沉淀主线：
 
@@ -32,16 +32,17 @@
 └── templates/       # 新闻建议、漏收候选、专题、资料卡片、场景模板
 ```
 
-## 企业试点负责人入口
+## 如何使用
 
-按下面 4 步立项，不要从模型能力清单出发：
+根据当前问题选择入口：
 
-1. 打开 [企业级 LLM 实践方案集](scenarios/enterprise-practice-playbook.md)，按风险与数据就绪度选题。
-2. 进入对应企业细分场景，确认适用边界、资料地址、基线指标和门禁。
-3. 回查 [sources/README.md](sources/README.md) 与相关 `topics/*/README.md`，核对一手依据。
-4. 有可复现实验时进入 [labs/](labs/README.md)；仍在处理的线索看 [inbox/](inbox/news-suggestions.md) 与 [gaps/](gaps/missed-news.md)。
+- 想建立技术地图：从 `topics/` 进入定义、证据链、边界和未决问题。
+- 想核验一个判断：从 [资料索引与证据卡](sources/README.md) 回到论文、官方文档或项目仓库。
+- 想把知识转成操作：进入 [实践场景](scenarios/README.md) 查看输入、流程、指标和门禁。
+- 想复现或比较：进入 [Labs](labs/README.md) 运行固定样例和评测脚本。
+- 想提交新闻建议或检查遗漏：进入 [新闻建议收件箱](inbox/news-suggestions.md) 与 [漏收候选](gaps/missed-news.md)。
 
-风险由低到高建议顺序：只读问答 / Prompt 运营 → Context 与 RAG → MCP 工具接入 → Agent 自动执行 → 带写入的 Improvement Loop。治理与安全门禁贯穿全程，见 [企业治理与安全场景](scenarios/enterprise-governance-safety.md)。
+企业实践仍是一类重要场景，可从 [企业级 LLM 实践方案集](scenarios/enterprise-practice-playbook.md) 按风险和数据就绪度选题。治理与安全门禁贯穿所有会接入真实数据或工具的场景，见 [企业治理与安全场景](scenarios/enterprise-governance-safety.md)。
 
 ## 主流程
 
@@ -75,4 +76,4 @@
 - 语言：中文为主，保留常见英文技术名词。
 - 节奏：持续维护，不按月报组织。
 - 形态：人工新闻建议 + 来源核验 + 知识沉淀 + 漏收检查。
-- 首版重点：结构、资料索引、实践场景，`labs/` 后续逐步加入可运行实验。
+- 当前重点：证据卡片、专题判断、实践场景和可运行实验之间可相互追溯。

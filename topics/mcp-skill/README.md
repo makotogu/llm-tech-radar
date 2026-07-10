@@ -80,6 +80,16 @@ MCP 是连接模型应用与外部工具、资源和数据源的开放协议。S
 基础练习入口：[scenarios/mcp-skill-tool-workflow.md](../../scenarios/mcp-skill-tool-workflow.md)
 方案集入口：[scenarios/enterprise-practice-playbook.md](../../scenarios/enterprise-practice-playbook.md)
 
+## 证据链与当前判断
+
+| 证据 | 支撑的判断 | 边界 |
+| --- | --- | --- |
+| [MCP Introduction](https://modelcontextprotocol.io/docs/getting-started/intro) | MCP 统一客户端、服务端、工具和资源的连接模型 | 连接标准不等于业务工作流标准 |
+| [MCP Security Best Practices](../../sources/cards/mcp-security-best-practices.md) | 授权、凭证、会话和本地服务都属于信任边界 | 必须结合具体 IAM 与网络架构 |
+| [OWASP LLM Top 10](../../sources/cards/owasp-llm-top10.md) | 工具越权、注入和供应链风险需要进入上线门禁 | 风险清单不能替代威胁建模 |
+
+当前判断：Tool 负责单一可审计能力，Skill 负责编排和验收，MCP 负责连接协议；三者不应混成一个不可解释的大工具。当前有 [基础练习场景](../../scenarios/mcp-skill-tool-workflow.md)，但还没有可运行 Lab；缺口是实现两个只读工具、一个审批写工具和完整审计记录。
+
 ## 后续追踪项
 
 - MCP server registry、远程 MCP、安全 tunnel 的发展。
