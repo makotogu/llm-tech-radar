@@ -1,494 +1,416 @@
-const documents = [
-  {
-    title: "Lab：Prompt 评审工作流",
-    path: "labs/prompt-review-workflow/README.md",
-    risk: ["lab", "L1"],
-    category: "scenario",
-    label: "实验",
-    summary: "对比原始与结构化 prompt 的最小可复现实验，对齐企业 Prompt 样例。"
-  },
-  {
-    title: "Lab：Context Assembly RAG",
-    path: "labs/context-assembly-rag/README.md",
-    risk: ["lab", "L2"],
-    category: "scenario",
-    label: "实验",
-    summary: "比较 baseline 与 governed 检索，检查引用、过期、权限和来源等级。"
-  },
-  {
-    title: "Lab：Eval Harness",
-    path: "labs/eval-harness/README.md",
-    risk: ["lab", "L1", "L2", "L3", "L4", "L5"],
-    category: "scenario",
-    label: "实验",
-    summary: "用固定样例比较候选系统，输出逐样例 scorecard 与候选汇总。"
-  },
-  {
-    title: "贡献指南",
-    path: "CONTRIBUTING.md",
-    category: "source",
-    label: "入口",
-    summary: "线索如何进 inbox、可信度分层、已沉淀完成定义与 PR 检查清单。"
-  },
-  {
-    title: "资料卡片：大规模客服 Agent",
-    path: "sources/cards/nubank-support-agents.md",
-    risk: ["proof", "L4"],
-    category: "source",
-    label: "资料",
-    summary: "100M 用户规模客服 Agent 的评测、上下文与线上指标案例。"
-  },
-  {
-    title: "资料卡片：OWASP LLM Top 10",
-    path: "sources/cards/owasp-llm-top10.md",
-    risk: ["proof", "gate"],
-    category: "source",
-    label: "资料",
-    summary: "企业 LLM 上线风险清单与门禁映射入口。"
-  },
-  {
-    title: "资料卡片：GitHub Copilot 提效实验",
-    path: "sources/cards/github-copilot-productivity.md",
-    risk: ["proof", "L1"],
-    category: "source",
-    label: "资料",
-    summary: "带对照实验的研发提效资料，用于设计企业内部效率评测。"
-  },
-  {
-    title: "资料卡片：企业 RAG 内容设计",
-    path: "sources/cards/enterprise-rag-content-design.md",
-    risk: ["proof", "L2"],
-    category: "source",
-    label: "资料",
-    summary: "说明企业 RAG 效果受知识库内容设计、文档结构和人工评测影响。"
-  },
-  {
-    title: "资料卡片：Case-aware RAG 评测",
-    path: "sources/cards/case-aware-rag-evaluation.md",
-    risk: ["proof", "L2"],
-    category: "source",
-    label: "资料",
-    summary: "把 RAG 评测扩展到 case、workflow 与严重度评分。"
-  },
-  {
-    title: "仓库说明",
-    path: "README.md",
-    category: "source",
-    label: "入口",
-    summary: "默认读者为企业试点负责人；含单一入口路径、主流程与可信度分层。"
-  },
-  {
-    title: "新闻建议收件箱",
-    path: "inbox/news-suggestions.md",
-    category: "queue",
-    label: "线索",
-    summary: "记录人提供的新闻建议、处理状态和沉淀位置。"
-  },
-  {
-    title: "漏收新闻候选",
-    path: "gaps/missed-news.md",
-    category: "queue",
-    label: "漏收",
-    summary: "记录疑似遗漏的重要新闻和需要核验的问题。"
-  },
-  {
-    title: "资料索引",
-    path: "sources/README.md",
-    category: "source",
-    label: "资料",
-    summary: "一手资料、论文、官方文档、开源项目和重要性说明。"
-  },
-  {
-    title: "Prompt 工程",
-    path: "topics/prompt-engineering/README.md",
-    category: "topic",
-    label: "专题",
-    summary: "任务、约束、示例、输出格式和评审标准的工程化实践。"
-  },
-  {
-    title: "Context 工程",
-    path: "topics/context-engineering/README.md",
-    category: "topic",
-    label: "专题",
-    summary: "选择、组织、压缩和更新模型可见上下文。"
-  },
-  {
-    title: "MCP + Skill",
-    path: "topics/mcp-skill/README.md",
-    category: "topic",
-    label: "专题",
-    summary: "把外部工具、资源和可复用技能接入模型工作流。"
-  },
-  {
-    title: "Agent 工程",
-    path: "topics/agent-engineering/README.md",
-    category: "topic",
-    label: "专题",
-    summary: "围绕目标规划、调用工具、保存状态和恢复失败。"
-  },
-  {
-    title: "Harness 工程",
-    path: "topics/harness-engineering/README.md",
-    category: "topic",
-    label: "专题",
-    summary: "评测、对比、回归、trace 和报告基础设施。"
-  },
-  {
-    title: "Loop 工程",
-    path: "topics/loop-engineering/README.md",
-    category: "topic",
-    label: "专题",
-    summary: "执行、反馈、修正、再执行的闭环设计。"
-  },
-  {
-    title: "实践场景总览",
-    path: "scenarios/README.md",
-    pilot: true,
-    risk: ["all"],
-    category: "scenario",
-    label: "场景",
-    summary: "把知识转化为流程、输入输出和验收标准。"
-  },
-  {
-    title: "企业级实践方案集",
-    path: "scenarios/enterprise-practice-playbook.md",
-    pilot: true,
-    risk: ["all", "L1", "L2", "L3", "L4", "L5", "gate"],
-    category: "scenario",
-    label: "企业",
-    summary: "按 L1–L5 风险选题，定义指标口径；细节见企业细分文档。"
-  },
-  {
-    title: "企业 Prompt 运营场景",
-    path: "scenarios/enterprise-prompt-operations.md",
-    pilot: true,
-    risk: ["L1"],
-    category: "scenario",
-    label: "企业",
-    summary: "客服、销售、合同、HR、财务等 Prompt 变更的版本、评测和灰度方案。"
-  },
-  {
-    title: "企业 Context 与 RAG 场景",
-    path: "scenarios/enterprise-context-rag-operations.md",
-    pilot: true,
-    risk: ["L2"],
-    category: "scenario",
-    label: "企业",
-    summary: "制度问答、售后工单、研发代码库、销售知识和投研资料的来源化上下文方案。"
-  },
-  {
-    title: "企业 MCP 与工具接入场景",
-    path: "scenarios/enterprise-mcp-tool-operations.md",
-    pilot: true,
-    risk: ["L3"],
-    category: "scenario",
-    label: "企业",
-    summary: "工单、CRM、指标、发布、文档工具的权限、审计和审批设计。"
-  },
-  {
-    title: "企业 Agent 运营场景",
-    path: "scenarios/enterprise-agent-operations.md",
-    pilot: true,
-    risk: ["L4"],
-    category: "scenario",
-    label: "企业",
-    summary: "缺陷修复、运维诊断、数据分析、客户成功和知识库维护的可接管 Agent 流程。"
-  },
-  {
-    title: "企业 Eval Harness 场景",
-    path: "scenarios/enterprise-evaluation-harness.md",
-    pilot: true,
-    risk: ["L1", "L2", "L3", "L4", "L5"],
-    category: "scenario",
-    label: "企业",
-    summary: "客服回归、RAG 引用、工具调用、模型替换和模型裁判的评测方案。"
-  },
-  {
-    title: "企业 Improvement Loop 场景",
-    path: "scenarios/enterprise-improvement-loop.md",
-    pilot: true,
-    risk: ["L5"],
-    category: "scenario",
-    label: "企业",
-    summary: "把失败样例转成 Prompt、RAG、知识库和工具流程的可控改进循环。"
-  },
-  {
-    title: "企业治理与安全场景",
-    path: "scenarios/enterprise-governance-safety.md",
-    pilot: true,
-    risk: ["gate", "L1", "L2", "L3", "L4", "L5"],
-    category: "scenario",
-    label: "治理",
-    summary: "上线门禁、提示注入、供应商风险、敏感数据和人工接管的治理方案。"
-  },
-  {
-    title: "Prompt 评审工作流",
-    path: "scenarios/prompt-review-workflow.md",
-    category: "scenario",
-    label: "场景",
-    summary: "评审和改进提示词结构、失败样例与输出验收标准。"
-  },
-  {
-    title: "Context 装配 RAG",
-    path: "scenarios/context-assembly-rag.md",
-    category: "scenario",
-    label: "场景",
-    summary: "围绕检索、压缩、排序和引用规则构建上下文。"
-  },
-  {
-    title: "MCP / Skill / Tool 工作流",
-    path: "scenarios/mcp-skill-tool-workflow.md",
-    category: "scenario",
-    label: "场景",
-    summary: "设计工具接入、权限边界和可复用技能。"
-  },
-  {
-    title: "Agent 任务执行器",
-    path: "scenarios/agent-task-runner.md",
-    category: "scenario",
-    label: "场景",
-    summary: "长任务中的规划、执行、状态、失败恢复和人工接管。"
-  },
-  {
-    title: "Eval Harness",
-    path: "scenarios/eval-harness.md",
-    category: "scenario",
-    label: "场景",
-    summary: "建立测试集、评测器、回归基线和可比较报告。"
-  },
-  {
-    title: "Improvement Loop",
-    path: "scenarios/improvement-loop.md",
-    category: "scenario",
-    label: "场景",
-    summary: "把反馈转化为可控的系统改进循环。"
-  },
-  {
-    title: "Labs 说明",
-    path: "labs/README.md",
-    category: "scenario",
-    label: "实验",
-    summary: "后续可运行实验、demo、评测脚本和报告约定。"
-  },
-  {
-    title: "资料卡片模板",
-    path: "templates/source-card-template.md",
-    category: "template",
-    label: "模板",
-    summary: "记录单份资料的价值、核心内容、工程启发和注意事项。"
-  },
-  {
-    title: "新闻建议模板",
-    path: "templates/news-suggestion-template.md",
-    category: "template",
-    label: "模板",
-    summary: "规范新闻建议的核验问题、处理动作和后续追踪。"
-  },
-  {
-    title: "漏收候选模板",
-    path: "templates/missed-news-template.md",
-    category: "template",
-    label: "模板",
-    summary: "记录疑似漏收新闻的来源线索和待核验问题。"
-  },
-  {
-    title: "专题模板",
-    path: "templates/topic-template.md",
-    category: "template",
-    label: "模板",
-    summary: "创建新专题时使用的定义、资料、边界和实践结构。"
-  },
-  {
-    title: "场景模板",
-    path: "templates/scenario-template.md",
-    category: "template",
-    label: "模板",
-    summary: "创建新实践场景时使用的目标、流程、输入输出和验收结构。"
-  }
-];
+const documents = Array.isArray(window.CONTENT_INDEX) ? window.CONTENT_INDEX : [];
+const topics = Array.isArray(window.TOPIC_INDEX) ? window.TOPIC_INDEX : [];
 
-const categoryNames = {
+const typeNames = {
+  all: "全部",
   topic: "专题",
   source: "资料",
   scenario: "场景",
+  lab: "实验",
   queue: "线索",
-  template: "模板",
-  enterprise: "企业试点"
+  guide: "指南",
+  template: "模板"
 };
 
+const allowedTypes = new Set(["all", "topic", "source", "scenario", "lab", "queue"]);
+const allowedRisks = new Set(["all", "L1", "L2", "L3", "L4", "L5", "gate"]);
 const state = {
-  filter: "enterprise",
+  type: "all",
+  topic: "all",
   risk: "all",
   query: "",
-  currentPath: ""
+  currentPath: "",
+  libraryScrollY: 0
 };
 
-const list = document.querySelector("#doc-list");
-const search = document.querySelector("#search-input");
-const tabs = document.querySelectorAll("[data-filter]");
-const reader = document.querySelector("#reader");
-const readerTitle = document.querySelector("#reader-title");
-const readerCategory = document.querySelector("#reader-category");
-const readerContent = document.querySelector("#reader-content");
-const rawLink = document.querySelector("#raw-link");
-const riskTabs = document.querySelectorAll("[data-risk]");
+const libraryView = document.querySelector("#library-view");
+const readerView = document.querySelector("#reader-view");
+const siteHeader = document.querySelector("#site-header");
+const siteFooter = document.querySelector("#site-footer");
+const repositoryState = document.querySelector("#repository-state");
+const recentList = document.querySelector("#recent-list");
+const topicGrid = document.querySelector("#topic-grid");
+const evidenceList = document.querySelector("#evidence-list");
+const labList = document.querySelector("#lab-list");
+const documentList = document.querySelector("#document-list");
 const visibleCount = document.querySelector("#visible-count");
-const activeFilterCopy = document.querySelector("#active-filter-copy");
+const activeQuery = document.querySelector("#active-query");
+const searchInput = document.querySelector("#search-input");
+const clearSearch = document.querySelector("#clear-search");
+const typeTabs = document.querySelectorAll("[data-type]");
+const topicSelect = document.querySelector("#topic-select");
+const riskSelect = document.querySelector("#risk-select");
+const riskSelectLabel = document.querySelector("#risk-select-label");
+const readerBack = document.querySelector("#reader-back");
+const readerMeta = document.querySelector("#reader-meta");
+const readerTitle = document.querySelector("#reader-title");
+const readerSourceLink = document.querySelector("#reader-source-link");
+const readerRawLink = document.querySelector("#reader-raw-link");
+const readerToc = document.querySelector("#reader-toc");
+const readerContent = document.querySelector("#reader-content");
+const relatedList = document.querySelector("#related-list");
+
+let readerRequestId = 0;
 
 function normalize(value) {
-  return value.toLowerCase().trim();
+  return String(value || "").toLowerCase().trim();
 }
 
-function isEnterpriseDoc(doc) {
-  return Boolean(doc.pilot) || doc.label === "企业" || doc.label === "治理" || /enterprise-/i.test(doc.path);
+function formatDate(value) {
+  if (!value) return "未标注";
+  const parts = value.split("-");
+  return parts.length === 3 ? `${parts[1]}.${parts[2]}` : value;
 }
 
-function isLabDoc(doc) {
-  return doc.label === "实验" || doc.path.startsWith("labs/");
+function formatFullDate(value) {
+  return value ? value.replaceAll("-", ".") : "未标注";
 }
 
-function isProofDoc(doc) {
-  return doc.path.startsWith("sources/cards/");
+function topicName(topicId) {
+  return topics.find((topic) => topic.id === topicId)?.shortTitle || topicId;
 }
 
-function isBasicScenario(doc) {
-  return doc.category === "scenario" && !isEnterpriseDoc(doc) && doc.path !== "scenarios/README.md" && doc.path !== "labs/README.md";
+function sourceName(doc) {
+  if (!doc.sourceUrl) return typeNames[doc.type] || "仓库内容";
+  try {
+    const host = new URL(doc.sourceUrl).hostname.replace(/^www\./, "");
+    const knownHosts = {
+      "arxiv.org": "arXiv",
+      "nist.gov": "NIST",
+      "developers.openai.com": "OpenAI",
+      "modelcontextprotocol.io": "MCP",
+      "owasp.org": "OWASP"
+    };
+    return knownHosts[host] || host;
+  } catch (_error) {
+    return "原始来源";
+  }
+}
+
+function sortByRecent(a, b) {
+  return b.updatedAt.localeCompare(a.updatedAt) || (a.featuredRank ?? 999) - (b.featuredRank ?? 999);
+}
+
+function renderRepositoryState() {
+  const sourceCount = documents.filter((doc) => doc.type === "source" && doc.sourceUrl).length;
+  const labCount = documents.filter((doc) => doc.type === "lab" && doc.path !== "labs/README.md").length;
+  const lastUpdated = documents.reduce((latest, doc) => doc.updatedAt > latest ? doc.updatedAt : latest, "");
+  const items = [
+    [topics.length, "主题"],
+    [sourceCount, "证据卡"],
+    [labCount, "实验"],
+    [formatFullDate(lastUpdated), "最后更新"]
+  ];
+  repositoryState.innerHTML = items.map(([value, label]) => `
+    <span class="state-item">
+      <strong>${escapeHtml(value)}</strong>
+      <span>${escapeHtml(label)}</span>
+    </span>
+  `).join("");
+}
+
+function renderRecent() {
+  const recent = documents
+    .filter((doc) => ["topic", "source", "scenario", "lab", "queue"].includes(doc.type))
+    .sort(sortByRecent)
+    .slice(0, 5);
+
+  recentList.innerHTML = recent.map((doc, index) => `
+    <button class="editorial-row" type="button" data-doc-path="${escapeAttribute(doc.path)}" style="--delay:${index * 34}ms">
+      <span class="editorial-date">${escapeHtml(formatDate(doc.updatedAt))}</span>
+      <span class="editorial-type">${escapeHtml(typeNames[doc.type])}</span>
+      <span class="editorial-title">${escapeHtml(doc.title)}</span>
+      <span class="editorial-source">${escapeHtml(sourceName(doc))}</span>
+      <span class="row-arrow" aria-hidden="true">→</span>
+    </button>
+  `).join("");
+}
+
+function renderTopicGrid() {
+  topicGrid.innerHTML = topics.map((topic) => {
+    const count = documents.filter((doc) => doc.topics.includes(topic.id)).length;
+    return `
+      <button class="topic-entry" type="button" data-topic-filter="${escapeAttribute(topic.id)}">
+        <span>
+          <strong>${escapeHtml(topic.shortTitle)}</strong>
+          <p>${escapeHtml(topic.description)}</p>
+        </span>
+        <span class="topic-count">${count} 条</span>
+        <span class="topic-route">查看关联内容 →</span>
+      </button>
+    `;
+  }).join("");
+}
+
+function renderCompactLists() {
+  const evidence = documents
+    .filter((doc) => doc.type === "source" && doc.sourceUrl)
+    .sort((a, b) => (a.featuredRank ?? 999) - (b.featuredRank ?? 999))
+    .slice(0, 4);
+  const labs = documents
+    .filter((doc) => doc.type === "lab" && doc.path !== "labs/README.md")
+    .sort((a, b) => (a.featuredRank ?? 999) - (b.featuredRank ?? 999));
+
+  evidenceList.innerHTML = evidence.map(renderCompactRow).join("");
+  labList.innerHTML = labs.map(renderCompactRow).join("");
+}
+
+function renderCompactRow(doc) {
+  const firstTopic = doc.topics[0] ? topicName(doc.topics[0]) : typeNames[doc.type];
+  return `
+    <button class="compact-row" type="button" data-doc-path="${escapeAttribute(doc.path)}">
+      <span class="compact-copy">
+        <span class="compact-title">${escapeHtml(doc.title)}</span>
+        <small>${escapeHtml(doc.summary)}</small>
+      </span>
+      <span class="compact-topic">${escapeHtml(firstTopic)}</span>
+      <span class="row-arrow" aria-hidden="true">→</span>
+    </button>
+  `;
+}
+
+function populateTopicSelect() {
+  topicSelect.insertAdjacentHTML("beforeend", topics.map((topic) => `
+    <option value="${escapeAttribute(topic.id)}">${escapeHtml(topic.shortTitle)}</option>
+  `).join(""));
 }
 
 function matchesDocument(doc) {
-  let matchesFilter = false;
-  if (state.filter === "enterprise") {
-    matchesFilter = isEnterpriseDoc(doc) || isLabDoc(doc) || isProofDoc(doc) || doc.path === "scenarios/README.md" || doc.path === "scenarios/enterprise-practice-playbook.md";
-  } else if (state.filter === "lab") {
-    matchesFilter = isLabDoc(doc);
-  } else if (state.filter === "proof") {
-    matchesFilter = isProofDoc(doc);
-  } else if (state.filter === "scenario") {
-    matchesFilter = isBasicScenario(doc);
-  } else if (state.filter === "more") {
-    matchesFilter = doc.category === "queue" || doc.category === "template" || doc.path === "labs/README.md";
-  } else if (state.filter === "all") {
-    matchesFilter = true;
-  } else {
-    matchesFilter = doc.category === state.filter;
-  }
-  const haystack = normalize(`${doc.title} ${doc.summary} ${doc.label} ${doc.path}`);
-  return matchesFilter && matchesRisk(doc) && haystack.includes(normalize(state.query));
+  if (state.type !== "all" && doc.type !== state.type) return false;
+  if (state.topic !== "all" && !doc.topics.includes(state.topic)) return false;
+  if (state.type === "scenario" && state.risk !== "all" && !doc.risk.includes(state.risk)) return false;
+
+  const query = normalize(state.query);
+  if (!query) return true;
+  const haystack = normalize([
+    doc.title,
+    doc.summary,
+    doc.path,
+    typeNames[doc.type],
+    ...doc.topics.map(topicName),
+    doc.sourceUrl || ""
+  ].join(" "));
+  return haystack.includes(query);
 }
 
-function matchesRisk(doc) {
-  if (state.risk === "all") return true;
-  const risks = Array.isArray(doc.risk) ? doc.risk : [];
-  if (state.risk === "gate") return risks.includes("gate") || doc.label === "治理";
-  return risks.includes(state.risk);
+function relevance(doc) {
+  const query = normalize(state.query);
+  if (!query) return 10;
+  const title = normalize(doc.title);
+  if (title.startsWith(query)) return 0;
+  if (title.includes(query)) return 1;
+  if (doc.topics.some((topic) => normalize(topicName(topic)).includes(query))) return 2;
+  return 3;
 }
 
 function sortDocuments(docs) {
-  const rank = (doc) => {
-    if (doc.path.includes("enterprise-practice-playbook")) return 0;
-    if (isEnterpriseDoc(doc)) return 1;
-    if (isLabDoc(doc)) return 2;
-    if (isProofDoc(doc)) return 3;
-    if (doc.path === "scenarios/README.md") return 4;
-    if (doc.category === "topic") return 5;
-    if (doc.category === "source") return 6;
-    return 5;
-  };
-  return [...docs].sort((a, b) => rank(a) - rank(b) || a.title.localeCompare(b.title, "zh"));
+  const typeRank = { topic: 0, source: 1, scenario: 2, lab: 3, queue: 4, guide: 5, template: 6 };
+  return [...docs].sort((a, b) =>
+    relevance(a) - relevance(b) ||
+    (typeRank[a.type] ?? 9) - (typeRank[b.type] ?? 9) ||
+    (a.featuredRank ?? 999) - (b.featuredRank ?? 999) ||
+    a.title.localeCompare(b.title, "zh-CN")
+  );
 }
 
-function renderList() {
-  const visibleDocs = sortDocuments(documents.filter(matchesDocument));
+function renderLibrary() {
+  const visible = sortDocuments(documents.filter(matchesDocument));
+  visibleCount.textContent = String(visible.length);
+  updateFilterControls();
+  updateActiveQuery();
 
-  if (!visibleDocs.length) {
-    list.innerHTML = '<p class="empty-state">没有匹配的文档。</p>';
-    updateStatus(0);
+  if (!visible.length) {
+    documentList.innerHTML = '<p class="empty-state">没有匹配的内容。可以清除搜索或切换主题。</p>';
     return;
   }
 
-  list.innerHTML = visibleDocs.map((doc, index) => `
-    <button class="doc-item" type="button" data-path="${escapeAttribute(doc.path)}" style="--delay:${index * 24}ms">
-      <span>
-        <span class="doc-title">
-          ${escapeHtml(doc.title)}
-          <span class="doc-tag">${escapeHtml(doc.label)}</span>
-        </span>
-        <span class="doc-meta">${escapeHtml(doc.summary)}</span>
+  documentList.innerHTML = visible.map((doc, index) => `
+    <button class="document-row" type="button" data-doc-path="${escapeAttribute(doc.path)}" style="--delay:${Math.min(index, 12) * 24}ms">
+      <span class="row-type">${escapeHtml(typeNames[doc.type] || "内容")}</span>
+      <span class="row-copy">
+        <span class="row-title">${escapeHtml(doc.title)}</span>
+        <span class="row-summary">${escapeHtml(doc.summary)}</span>
       </span>
-      <span class="doc-arrow" aria-hidden="true">→</span>
+      <span class="row-topics">${doc.topics.slice(0, 3).map((topic) => `<span class="row-topic">${escapeHtml(topicName(topic))}</span>`).join("")}</span>
+      <span class="row-date">${escapeHtml(formatFullDate(doc.updatedAt))}</span>
+      <span class="row-arrow" aria-hidden="true">→</span>
     </button>
   `).join("");
-  updateStatus(visibleDocs.length);
 }
 
-function setFilter(filter) {
-  state.filter = filter;
-  tabs.forEach((tab) => {
-    tab.classList.toggle("active", tab.dataset.filter === filter);
-  });
-  renderList();
+function updateFilterControls() {
+  typeTabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.type === state.type));
+  topicSelect.value = state.topic;
+  riskSelect.value = state.risk;
+  riskSelectLabel.hidden = state.type !== "scenario";
+  clearSearch.hidden = !state.query;
 }
 
-function setRisk(risk) {
-  state.risk = risk;
-  riskTabs.forEach((tab) => {
-    tab.classList.toggle("active", tab.dataset.risk === risk);
-  });
-  renderList();
+function updateActiveQuery() {
+  const parts = [typeNames[state.type] || "全部"];
+  if (state.topic !== "all") parts.push(topicName(state.topic));
+  if (state.type === "scenario" && state.risk !== "all") parts.push(state.risk === "gate" ? "治理门禁" : state.risk);
+  if (state.query) parts.push(`“${state.query}”`);
+  activeQuery.textContent = parts.join(" · ");
 }
 
-function updateStatus(count) {
-  const filterName = document.querySelector(`[data-filter="${state.filter}"]`)?.textContent || "文档";
-  const riskName = document.querySelector(`[data-risk="${state.risk}"]`)?.textContent || "全部风险";
-  if (visibleCount) visibleCount.textContent = `${count} 篇`;
-  if (activeFilterCopy) activeFilterCopy.textContent = `${filterName} · ${riskName}`;
+function setType(type, options = {}) {
+  state.type = allowedTypes.has(type) ? type : "all";
+  if (state.type !== "scenario") state.risk = "all";
+  renderLibrary();
+  syncFiltersToUrl();
+  if (options.scroll) scrollToLibrary();
+}
+
+function setTopic(topic, options = {}) {
+  state.topic = topics.some((item) => item.id === topic) ? topic : "all";
+  renderLibrary();
+  syncFiltersToUrl();
+  if (options.scroll) scrollToLibrary();
+}
+
+function scrollToLibrary() {
+  document.querySelector("#library").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function syncFiltersToUrl() {
+  const url = new URL(window.location.href);
+  url.searchParams.delete("doc");
+  setOptionalParam(url, "type", state.type, "all");
+  setOptionalParam(url, "topic", state.topic, "all");
+  setOptionalParam(url, "risk", state.type === "scenario" ? state.risk : "all", "all");
+  setOptionalParam(url, "q", state.query, "");
+  window.history.replaceState({ library: true }, "", url);
+}
+
+function setOptionalParam(url, key, value, defaultValue) {
+  if (!value || value === defaultValue) url.searchParams.delete(key);
+  else url.searchParams.set(key, value);
+}
+
+function readFiltersFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get("type") || "all";
+  const topic = params.get("topic") || "all";
+  const risk = params.get("risk") || "all";
+  state.type = allowedTypes.has(type) ? type : "all";
+  state.topic = topics.some((item) => item.id === topic) ? topic : "all";
+  state.risk = allowedRisks.has(risk) && state.type === "scenario" ? risk : "all";
+  state.query = params.get("q") || "";
+  searchInput.value = state.query;
 }
 
 async function openDocument(path, options = {}) {
   const doc = findDocument(path);
   if (!doc) return;
 
+  const requestId = ++readerRequestId;
+  if (readerView.hidden) state.libraryScrollY = window.scrollY || 0;
   state.currentPath = doc.path;
+  libraryView.hidden = true;
+  readerView.hidden = false;
+  siteHeader.hidden = true;
+  siteFooter.hidden = true;
+  document.body.classList.add("reading");
+  document.title = `${doc.title} · LLM 工程知识库`;
+
+  readerMeta.textContent = buildReaderMeta(doc);
   readerTitle.textContent = doc.title;
-  readerCategory.textContent = categoryNames[doc.category] || "文档";
-  rawLink.href = doc.path;
-  readerContent.innerHTML = '<p class="empty-state">正在加载正文...</p>';
-  reader.classList.add("open");
-  reader.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
+  readerRawLink.href = doc.path;
+  if (doc.sourceUrl) {
+    readerSourceLink.href = doc.sourceUrl;
+    readerSourceLink.hidden = false;
+  } else {
+    readerSourceLink.hidden = true;
+  }
+  readerContent.innerHTML = '<p class="empty-state">正在加载正文…</p>';
+  readerToc.innerHTML = "";
+  renderRelated(doc);
+  window.scrollTo({ top: 0, behavior: "auto" });
+
+  if (options.push !== false) {
+    const url = new URL(window.location.href);
+    url.searchParams.set("doc", doc.path);
+    window.history.pushState({ reader: true, path: doc.path }, "", url);
+  }
 
   try {
     const response = await fetch(doc.path, { cache: "no-cache" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const markdown = await response.text();
-    readerContent.innerHTML = renderMarkdown(markdown, doc.path);
-    readerContent.scrollTop = 0;
-    if (options.updateUrl !== false) {
-      const url = new URL(window.location.href);
-      url.searchParams.set("doc", doc.path);
-      window.history.replaceState(null, "", url);
-    }
-  } catch (error) {
+    if (requestId !== readerRequestId) return;
+    const rendered = renderMarkdown(markdown, doc.path);
+    readerContent.innerHTML = rendered.html;
+    renderToc(rendered.headings);
+  } catch (_error) {
+    if (requestId !== readerRequestId) return;
     readerContent.innerHTML = `
-      <p>无法直接加载这个 Markdown 文件。GitHub Pages 上通常可以正常读取；如果你正在用 file:// 打开页面，请改用本地静态服务器。</p>
+      <h1>无法加载正文</h1>
+      <p>当前环境不能直接读取这个 Markdown 文件。</p>
       <p><a href="${escapeAttribute(doc.path)}" target="_blank" rel="noreferrer">打开源文件</a></p>
     `;
   }
 }
 
-function closeReader() {
-  reader.classList.remove("open");
-  reader.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
+function buildReaderMeta(doc) {
+  const parts = [typeNames[doc.type] || "内容", `更新 ${formatFullDate(doc.updatedAt)}`];
+  if (doc.verifiedAt) parts.push(`核验 ${formatFullDate(doc.verifiedAt)}`);
+  return parts.join(" · ");
+}
+
+function showLibrary() {
+  const wasReading = Boolean(state.currentPath);
+  ++readerRequestId;
   state.currentPath = "";
+  readerView.hidden = true;
+  libraryView.hidden = false;
+  siteHeader.hidden = false;
+  siteFooter.hidden = false;
+  document.body.classList.remove("reading");
+  document.title = "LLM 工程知识库";
+  if (wasReading) window.scrollTo({ top: state.libraryScrollY, behavior: "auto" });
+}
+
+function closeReader() {
+  if (window.history.state?.reader) {
+    window.history.back();
+    return;
+  }
   const url = new URL(window.location.href);
   url.searchParams.delete("doc");
-  window.history.replaceState(null, "", url);
+  window.history.replaceState({ library: true }, "", url);
+  showLibrary();
+}
+
+function renderRelated(doc) {
+  const related = documents
+    .filter((item) => item.path !== doc.path && item.topics.some((topic) => doc.topics.includes(topic)))
+    .map((item) => ({
+      item,
+      score: item.topics.filter((topic) => doc.topics.includes(topic)).length
+    }))
+    .sort((a, b) => b.score - a.score || (a.item.featuredRank ?? 999) - (b.item.featuredRank ?? 999))
+    .slice(0, 4);
+
+  relatedList.innerHTML = related.length
+    ? related.map(({ item }) => `<button type="button" data-doc-path="${escapeAttribute(item.path)}">${escapeHtml(item.title)}</button>`).join("")
+    : '<p class="empty-state">暂无关联内容。</p>';
+}
+
+function renderToc(headings) {
+  if (!headings.length) {
+    readerToc.hidden = true;
+    return;
+  }
+  readerToc.hidden = false;
+  readerToc.innerHTML = headings.map((heading) => `
+    <a href="#${escapeAttribute(heading.id)}" data-level="${heading.level}">${escapeHtml(heading.text)}</a>
+  `).join("");
 }
 
 function findDocument(path) {
-  const normalized = normalizeDocumentPath(path);
-  return documents.find((item) => normalizeDocumentPath(item.path) === normalized);
+  const normalizedPath = normalizeDocumentPath(path);
+  return documents.find((doc) => normalizeDocumentPath(doc.path) === normalizedPath);
 }
 
 function normalizeDocumentPath(path) {
@@ -497,56 +419,68 @@ function normalizeDocumentPath(path) {
     .split("?", 1)[0]
     .replace(/^\.\/+/, "")
     .replace(/^\/+/, "");
-
   if (!clean) return "";
   if (clean.endsWith("/")) return `${clean}README.md`;
-  if (!clean.endsWith(".md") && documents.some((doc) => doc.path === `${clean}/README.md`)) {
-    return `${clean}/README.md`;
-  }
   return clean;
 }
 
 function renderMarkdown(markdown, sourcePath) {
   const lines = markdown.replace(/\r\n/g, "\n").split("\n");
+  const headings = [];
+  const slugCounts = new Map();
   let html = "";
   let paragraph = [];
   let listItems = [];
+  let listType = "";
   let tableRows = [];
+  let quoteLines = [];
   let inCode = false;
   let codeLines = [];
 
   const flushParagraph = () => {
-    if (paragraph.length) {
-      html += `<p>${formatInline(paragraph.join(" "), sourcePath)}</p>`;
-      paragraph = [];
-    }
+    if (!paragraph.length) return;
+    html += `<p>${formatInline(paragraph.join(" "), sourcePath)}</p>`;
+    paragraph = [];
   };
 
   const flushList = () => {
-    if (listItems.length) {
-      html += `<ul>${listItems.map((item) => `<li>${formatInline(item, sourcePath)}</li>`).join("")}</ul>`;
-      listItems = [];
-    }
+    if (!listItems.length) return;
+    html += `<${listType}>${listItems.map((item) => `<li>${formatInline(item, sourcePath)}</li>`).join("")}</${listType}>`;
+    listItems = [];
+    listType = "";
   };
 
   const flushTable = () => {
-    if (tableRows.length) {
-      const rows = tableRows.filter((row) => !/^\|\s*-+/.test(row));
-      const [head, ...body] = rows.map(parseTableRow);
-      if (head) {
-        html += "<table><thead><tr>";
-        html += head.map((cell) => `<th>${formatInline(cell, sourcePath)}</th>`).join("");
-        html += "</tr></thead><tbody>";
-        html += body.map((row) => `<tr>${row.map((cell) => `<td>${formatInline(cell, sourcePath)}</td>`).join("")}</tr>`).join("");
-        html += "</tbody></table>";
-      }
-      tableRows = [];
+    if (!tableRows.length) return;
+    const parsedRows = tableRows.map(parseTableRow);
+    const rows = parsedRows.filter((row) => !row.every((cell) => /^:?-{3,}:?$/.test(cell.replace(/\s/g, ""))));
+    const [head, ...body] = rows;
+    if (head) {
+      html += '<div class="table-wrap"><table><thead><tr>';
+      html += head.map((cell) => `<th>${formatInline(cell, sourcePath)}</th>`).join("");
+      html += "</tr></thead><tbody>";
+      html += body.map((row) => `<tr>${row.map((cell) => `<td>${formatInline(cell, sourcePath)}</td>`).join("")}</tr>`).join("");
+      html += "</tbody></table></div>";
     }
+    tableRows = [];
+  };
+
+  const flushQuote = () => {
+    if (!quoteLines.length) return;
+    html += `<blockquote>${formatInline(quoteLines.join(" "), sourcePath)}</blockquote>`;
+    quoteLines = [];
   };
 
   const flushCode = () => {
     html += `<pre><code>${escapeHtml(codeLines.join("\n"))}</code></pre>`;
     codeLines = [];
+  };
+
+  const flushTextBlocks = () => {
+    flushParagraph();
+    flushList();
+    flushTable();
+    flushQuote();
   };
 
   for (const line of lines) {
@@ -555,9 +489,7 @@ function renderMarkdown(markdown, sourcePath) {
         flushCode();
         inCode = false;
       } else {
-        flushParagraph();
-        flushList();
-        flushTable();
+        flushTextBlocks();
         inCode = true;
       }
       continue;
@@ -569,15 +501,14 @@ function renderMarkdown(markdown, sourcePath) {
     }
 
     if (!line.trim()) {
-      flushParagraph();
-      flushList();
-      flushTable();
+      flushTextBlocks();
       continue;
     }
 
-    if (/^\|.+\|$/.test(line.trim())) {
+    if (/^\s*\|.+\|\s*$/.test(line)) {
       flushParagraph();
       flushList();
+      flushQuote();
       tableRows.push(line.trim());
       continue;
     }
@@ -588,81 +519,128 @@ function renderMarkdown(markdown, sourcePath) {
     if (heading) {
       flushParagraph();
       flushList();
+      flushQuote();
       const level = heading[1].length;
-      html += `<h${level}>${formatInline(heading[2], sourcePath)}</h${level}>`;
+      const text = stripInlineMarkdown(heading[2]);
+      const id = uniqueSlug(text, slugCounts);
+      html += `<h${level} id="${escapeAttribute(id)}">${formatInline(heading[2], sourcePath)}</h${level}>`;
+      if (level >= 2) headings.push({ level, id, text });
       continue;
     }
 
-    const item = line.match(/^\s*[-*]\s+(.+)$/);
-    if (item) {
+    if (/^\s*([-*_])(?:\s*\1){2,}\s*$/.test(line)) {
       flushParagraph();
-      listItems.push(item[1]);
+      flushList();
+      flushQuote();
+      html += "<hr>";
       continue;
     }
 
-    const orderedItem = line.match(/^\s*\d+\.\s+(.+)$/);
-    if (orderedItem) {
+    const quote = line.match(/^>\s?(.*)$/);
+    if (quote) {
       flushParagraph();
-      listItems.push(orderedItem[1]);
+      flushList();
+      quoteLines.push(quote[1]);
       continue;
     }
 
+    flushQuote();
+
+    const unordered = line.match(/^\s*[-*]\s+(.+)$/);
+    if (unordered) {
+      flushParagraph();
+      if (listType && listType !== "ul") flushList();
+      listType = "ul";
+      listItems.push(unordered[1]);
+      continue;
+    }
+
+    const ordered = line.match(/^\s*\d+\.\s+(.+)$/);
+    if (ordered) {
+      flushParagraph();
+      if (listType && listType !== "ol") flushList();
+      listType = "ol";
+      listItems.push(ordered[1]);
+      continue;
+    }
+
+    flushList();
     paragraph.push(line.trim());
   }
 
-  flushParagraph();
-  flushList();
-  flushTable();
+  flushTextBlocks();
   if (inCode) flushCode();
-
-  return html;
+  return { html, headings };
 }
 
 function parseTableRow(row) {
   return row.replace(/^\||\|$/g, "").split("|").map((cell) => cell.trim());
 }
 
+function stripInlineMarkdown(value) {
+  return String(value)
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[*_`~]/g, "")
+    .trim();
+}
+
+function uniqueSlug(value, counts) {
+  const base = String(value)
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s-]/gu, "")
+    .trim()
+    .replace(/\s+/g, "-") || "section";
+  const count = counts.get(base) || 0;
+  counts.set(base, count + 1);
+  return count ? `${base}-${count + 1}` : base;
+}
+
 function formatInline(value, sourcePath) {
-  return escapeHtml(value)
-    .replace(/`([^`]+)`/g, "<code>$1</code>")
+  const tokens = [];
+  const token = (html) => {
+    const marker = `TOKENPLACEHOLDER${tokens.length}END`;
+    tokens.push([marker, html]);
+    return marker;
+  };
+
+  let output = String(value)
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, label, href) => token(renderLink(label, href, sourcePath)))
+    .replace(/`([^`]+)`/g, (_match, code) => token(`<code>${escapeHtml(code)}</code>`));
+
+  output = escapeHtml(output)
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, label, href) => {
-      return renderLink(label, href, sourcePath);
-    })
     .replace(/(^|[\s>])(https?:\/\/[^\s<]+)/g, (_match, prefix, href) => {
       return `${prefix}<a href="${escapeAttribute(href)}" target="_blank" rel="noreferrer">${href}</a>`;
     });
+
+  tokens.forEach(([marker, html]) => {
+    output = output.replace(marker, html);
+  });
+  return output;
 }
 
 function renderLink(label, href, sourcePath) {
-  const resolved = resolveInternalPath(href, sourcePath);
-  if (!resolved) {
-    return `<a href="${escapeAttribute(href)}" target="_blank" rel="noreferrer">${label}</a>`;
+  if (/^(https?:|mailto:)/i.test(href)) {
+    return `<a href="${escapeAttribute(href)}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>`;
   }
 
+  const resolved = resolveInternalPath(href, sourcePath);
+  if (!resolved) return `<a href="${escapeAttribute(href)}">${escapeHtml(label)}</a>`;
   const doc = findDocument(resolved);
   if (doc) {
     const url = new URL(window.location.href);
     url.searchParams.set("doc", doc.path);
-    return `<a href="${escapeAttribute(url.pathname + url.search + url.hash)}" data-doc-path="${escapeAttribute(doc.path)}">${label}</a>`;
+    return `<a href="${escapeAttribute(url.pathname + url.search)}" data-doc-path="${escapeAttribute(doc.path)}">${escapeHtml(label)}</a>`;
   }
-
-  return `<a href="${escapeAttribute(resolved)}" target="_blank" rel="noreferrer">${label}</a>`;
+  return `<a href="${escapeAttribute(resolved)}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>`;
 }
 
 function resolveInternalPath(href, sourcePath) {
-  if (!href || href.startsWith("#") || /^[a-z][a-z0-9+.-]*:/i.test(href)) {
-    return "";
-  }
-
+  if (!href || href.startsWith("#") || /^[a-z][a-z0-9+.-]*:/i.test(href)) return "";
   const pageBase = new URL(".", window.location.href);
   const sourceUrl = new URL(sourcePath, pageBase);
   const resolved = new URL(href, sourceUrl);
-
-  if (resolved.origin !== window.location.origin || !resolved.pathname.startsWith(pageBase.pathname)) {
-    return "";
-  }
-
+  if (resolved.origin !== window.location.origin || !resolved.pathname.startsWith(pageBase.pathname)) return "";
   return decodeURIComponent(resolved.pathname.slice(pageBase.pathname.length));
 }
 
@@ -678,42 +656,88 @@ function escapeAttribute(value) {
   return escapeHtml(value).replace(/'/g, "&#039;");
 }
 
-tabs.forEach((tab) => {
-  tab.addEventListener("click", () => setFilter(tab.dataset.filter));
+function renderFromLocation() {
+  readFiltersFromUrl();
+  renderLibrary();
+  const path = new URLSearchParams(window.location.search).get("doc");
+  if (path && findDocument(path)) openDocument(path, { push: false });
+  else showLibrary();
+}
+
+typeTabs.forEach((tab) => {
+  tab.addEventListener("click", () => setType(tab.dataset.type));
 });
 
-riskTabs.forEach((tab) => {
-  tab.addEventListener("click", () => setRisk(tab.dataset.risk));
+topicSelect.addEventListener("change", (event) => setTopic(event.target.value));
+
+riskSelect.addEventListener("change", (event) => {
+  state.risk = allowedRisks.has(event.target.value) ? event.target.value : "all";
+  renderLibrary();
+  syncFiltersToUrl();
 });
 
-search.addEventListener("input", (event) => {
-  state.query = event.target.value;
-  renderList();
+searchInput.addEventListener("input", (event) => {
+  state.query = event.target.value.trim();
+  renderLibrary();
+  syncFiltersToUrl();
 });
 
-list.addEventListener("click", (event) => {
-  const item = event.target.closest("[data-path]");
-  if (item) openDocument(item.dataset.path);
+searchInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    scrollToLibrary();
+  }
 });
+
+clearSearch.addEventListener("click", () => {
+  state.query = "";
+  searchInput.value = "";
+  renderLibrary();
+  syncFiltersToUrl();
+  searchInput.focus();
+});
+
+readerBack.addEventListener("click", closeReader);
 
 document.addEventListener("click", (event) => {
-  const link = event.target.closest("a[data-doc-path]");
-  if (!link) return;
-  event.preventDefault();
-  openDocument(link.dataset.docPath);
+  const docLink = event.target.closest("[data-doc-path]");
+  if (docLink) {
+    event.preventDefault();
+    openDocument(docLink.dataset.docPath);
+    return;
+  }
+
+  const topicLink = event.target.closest("[data-topic-filter]");
+  if (topicLink) {
+    state.type = "all";
+    state.risk = "all";
+    setTopic(topicLink.dataset.topicFilter, { scroll: true });
+    return;
+  }
+
+  const typeShortcut = event.target.closest("[data-type-shortcut]");
+  if (typeShortcut) {
+    setType(typeShortcut.dataset.typeShortcut, { scroll: true });
+    return;
+  }
+
+  if (event.target.closest("[data-show-all]")) {
+    state.topic = "all";
+    state.query = "";
+    searchInput.value = "";
+    setType("all", { scroll: true });
+  }
 });
 
-document.querySelectorAll("[data-close-reader]").forEach((button) => {
-  button.addEventListener("click", closeReader);
+window.addEventListener("popstate", renderFromLocation);
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !readerView.hidden) closeReader();
 });
 
-window.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") closeReader();
-});
-
-renderList();
-
-const initialDoc = new URLSearchParams(window.location.search).get("doc");
-if (initialDoc && findDocument(initialDoc)) {
-  window.setTimeout(() => openDocument(initialDoc, { updateUrl: false }), 0);
-}
+populateTopicSelect();
+renderRepositoryState();
+renderRecent();
+renderTopicGrid();
+renderCompactLists();
+renderFromLocation();
