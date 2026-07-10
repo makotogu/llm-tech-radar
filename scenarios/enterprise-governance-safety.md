@@ -16,6 +16,9 @@
 | NIST AI Risk Management Framework | https://www.nist.gov/itl/ai-risk-management-framework | 建立治理、测量、管理和风险沟通框架 |
 | OpenAI Safety best practices | https://developers.openai.com/api/docs/guides/safety-best-practices | 参考安全检查、分层防护和上线前控制 |
 | OpenAI Enterprise privacy | https://openai.com/enterprise-privacy/ | 作为供应商数据控制、访问控制、保留和合规承诺的核验入口之一，实际企业使用还需核验合同条款 |
+| NIST AI 600-1 证据卡 | ../sources/cards/nist-ai-rmf-genai.md | 将生成式 AI 风险连接到组织责任、测量证据和处置流程 |
+| OWASP LLM Top 10 证据卡 | ../sources/cards/owasp-llm-top10.md | 区分风险清单、具体威胁建模和安全审计 |
+| MCP Security 证据卡 | ../sources/cards/mcp-security-best-practices.md | 补充工具授权、凭证流和本地 server 风险 |
 
 ## 场景 1：LLM 应用上线门禁
 

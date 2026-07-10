@@ -22,9 +22,14 @@
 | 日期 | 检查人 | 范围 | 结果 | 备注 |
 | --- | --- | --- | --- | --- |
 | 2026-07-09 | 仓库维护 | 安全资料、生产案例、评测框架 | 已检查；已将 MCP Security、OWASP Prompt Injection、间接注入论文、HELM、安全最佳实践等补入 sources | 无新增 gaps 候选；后续按周续写 |
+| 2026-07-10 | 仓库维护 | 官方工程博客、Agent 协议、Context、Harness、治理框架 | 发现 5 条需要进一步核验的工程线索；NIST AI 600-1 已直接核验并沉淀 | 候选只记录问题，不作为仓库结论 |
 
 ## 候选记录
 
 | 候选新闻 | 来源线索 | 可能相关专题 | 需要核验的问题 | 状态 |
 | --- | --- | --- | --- | --- |
-| 暂无 |  |  |  |  |
+| Building effective agents | https://www.anthropic.com/engineering/building-effective-agents | Agent、Harness | “workflow 与 agent”的划分是否能稳定映射到本仓库 L1-L5；文中的客户经验有哪些可复核证据，哪些只是厂商经验 | 待核验 |
+| Demystifying evals for AI agents | https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents | Agent、Harness | 多轮 Agent eval 的 grader 组合、任务集构造和人工校准方法能否转成 Eval Lab 样例 | 待核验 |
+| Agent2Agent Protocol（A2A） | https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/ | MCP + Skill、Agent | A2A 与 MCP 的职责边界、当前规范归属、生产成熟度和安全模型分别是什么 | 持续追踪 |
+| Effective context engineering for AI agents | https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents | Context、Agent | “最小高信号上下文”、compaction、just-in-time retrieval 的建议有哪些可量化验收方法 | 待核验 |
+| Harness design for long-running application development | https://www.anthropic.com/engineering/harness-design-long-running-apps | Harness、Loop、Agent | planner / generator / evaluator 结构的收益来自哪些可复核实验；哪些结论只适用于长周期软件开发 | 待核验 |

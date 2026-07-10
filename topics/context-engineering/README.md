@@ -80,6 +80,16 @@ Context 工程是围绕“模型本次调用应该看见什么”进行设计的
 基础练习入口：[scenarios/context-assembly-rag.md](../../scenarios/context-assembly-rag.md)
 方案集入口：[scenarios/enterprise-practice-playbook.md](../../scenarios/enterprise-practice-playbook.md)
 
+## 证据链与当前判断
+
+| 证据 | 支撑的判断 | 边界 |
+| --- | --- | --- |
+| [RAG 基础论文](../../sources/cards/rag-foundation.md) | 外部知识可补充参数化记忆，并提供更新与来源入口 | 原始论文不含企业权限和内容治理 |
+| [企业 RAG 内容设计](../../sources/cards/enterprise-rag-content-design.md) | 文档结构和人工评测是 RAG 系统的一部分 | 经验主要来自产品文档问答 |
+| [Case-aware RAG 评测](../../sources/cards/case-aware-rag-evaluation.md) | 多轮 case 需要 workflow 和严重度维度 | LLM judge 仍需人工校准 |
+
+当前判断：Context 工程的核心不是“塞更多 token”，而是在预算内选择最小充分证据，并记录来源、权限、版本和丢弃原因。当前 [Context Assembly RAG Lab](../../labs/context-assembly-rag/README.md) 已覆盖来源、过期和权限；下一步需要加入多轮 case 与冲突来源样例。
+
 ## 后续追踪项
 
 - 长上下文模型对 RAG 的替代和互补关系。

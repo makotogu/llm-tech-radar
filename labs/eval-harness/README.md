@@ -37,3 +37,4 @@ python3 src/score_eval_cases.py
 - 企业场景：[scenarios/enterprise-evaluation-harness.md](../../scenarios/enterprise-evaluation-harness.md)
 - 样例包：[scenarios/fixtures/enterprise-evaluation-harness/README.md](../../scenarios/fixtures/enterprise-evaluation-harness/README.md)
 - 专题：[topics/harness-engineering/README.md](../../topics/harness-engineering/README.md)
+- 证据：[OpenAI Evals](../../sources/cards/openai-evals.md)、[Case-aware RAG 评测](../../sources/cards/case-aware-rag-evaluation.md)、[Nubank 客服 Agent](../../sources/cards/nubank-support-agents.md)

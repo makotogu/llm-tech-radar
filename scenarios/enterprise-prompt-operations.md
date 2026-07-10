@@ -17,6 +17,7 @@
 | OpenAI Evals cookbook | https://developers.openai.com/cookbook/examples/evaluation/getting_started_with_openai_evals | 把 Prompt 改动纳入可重复评测，而不是靠主观体验判断 |
 | GitHub Copilot productivity paper | https://arxiv.org/abs/2302.06590 | 作为研发场景里“效率提升必须实测”的案例材料 |
 | GitHub Copilot productivity card | ../sources/cards/github-copilot-productivity.md | 用资料卡方式沉淀实验方法、指标边界和注意事项 |
+| OpenAI Evals 证据卡 | ../sources/cards/openai-evals.md | 把数据集、grader、候选和运行结果拆成可版本化资产 |
 
 ## 场景 1：客服答复标准化
 

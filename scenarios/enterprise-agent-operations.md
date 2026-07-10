@@ -16,6 +16,8 @@
 | ReAct paper | https://arxiv.org/abs/2210.03629 | 参考 reasoning 与 action 交替的任务执行范式 |
 | Reflexion paper | https://arxiv.org/abs/2303.11366 | 参考失败反馈和后续尝试改进 |
 | OWASP Top 10 for LLM Applications | https://owasp.org/www-project-top-10-for-large-language-model-applications/ | 约束 excessive agency、数据泄露、提示注入等风险 |
+| ReAct 证据卡 | ../sources/cards/react-reasoning-acting.md | 把论文方法转换为结构化 action、observation 和恢复记录 |
+| Nubank 客服 Agent 证据卡 | ../sources/cards/nubank-support-agents.md | 区分生产案例事实、可迁移结构和不可外推业务指标 |
 
 ## 场景 1：缺陷修复 Agent
 

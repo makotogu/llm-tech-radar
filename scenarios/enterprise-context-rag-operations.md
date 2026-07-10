@@ -18,6 +18,9 @@ Context 工程的企业价值不在“塞更多资料”，而在于把来源、
 | Nubank customer support agents paper | https://arxiv.org/abs/2606.08867 | 参考大规模客服 Agent 中上下文、评测和线上指标的结合方式 |
 | Enterprise RAG content design paper | https://arxiv.org/abs/2410.12812 | 参考文档结构、内容治理和 human-in-the-lead 评测对企业 RAG 的影响 |
 | Case-aware RAG evaluation paper | https://arxiv.org/abs/2602.20379 | 参考多轮 case/workflow 场景里的 RAG 评测字段和严重度评分 |
+| RAG 基础论文证据卡 | ../sources/cards/rag-foundation.md | 区分检索命中、外部知识和回答依据的系统边界 |
+| 企业 RAG 内容设计证据卡 | ../sources/cards/enterprise-rag-content-design.md | 将内容治理、人工评测和适用边界映射到项目流程 |
+| Case-aware RAG 证据卡 | ../sources/cards/case-aware-rag-evaluation.md | 明确多轮评测维度、严重度与人工校准要求 |
 
 ## 场景 1：制度知识库问答
 

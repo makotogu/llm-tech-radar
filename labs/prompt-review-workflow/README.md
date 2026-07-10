@@ -38,3 +38,4 @@ python3 src/make_scorecard.py
 - 基础场景：[scenarios/prompt-review-workflow.md](../../scenarios/prompt-review-workflow.md)
 - 企业场景：[scenarios/enterprise-prompt-operations.md](../../scenarios/enterprise-prompt-operations.md)
 - 专题：[topics/prompt-engineering/README.md](../../topics/prompt-engineering/README.md)
+- 证据：[GitHub Copilot 提效对照实验](../../sources/cards/github-copilot-productivity.md)、[DSPy](../../sources/cards/dspy-pipeline-optimization.md)
